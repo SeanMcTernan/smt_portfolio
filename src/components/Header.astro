@@ -4,55 +4,16 @@ import { Image } from "astro:assets";
 import logo from "../assets/images/logo.svg";
 ---
 
-<header>
-  <nav>
-    <Image src={logo} alt="Site Logo" />
-    <div class="internal-links">
-      <HeaderLink href="/">Home</HeaderLink>
-      <HeaderLink href="/blog">Blog</HeaderLink>
-      <HeaderLink href="/about">About</HeaderLink>
-      <HeaderLink href="/contact">Contact</HeaderLink>
-    </div>
-  </nav>
+<header class="relative bg-zinc-900 shadow-md py-4 mb-8">
+  <div class="container mx-auto flex justify-between items-center">
+    <Image src={logo} alt="Site Logo" class="mt-2 ml-2 hidden sm:block" />
+    <nav class="flex justify-center items-center w-full">
+      <div class="internal-links flex space-x-4">
+        <HeaderLink href="/">Home</HeaderLink>
+        <HeaderLink href="/blog">Blog</HeaderLink>
+        <HeaderLink href="/about">About</HeaderLink>
+        <HeaderLink href="/contact">Contact</HeaderLink>
+      </div>
+    </nav>
+  </div>
 </header>
-<style>
-  header {
-    margin: 0;
-    padding: 0 1em;
-    background: white;
-    box-shadow: 0 2px 8px rgba(var(--black), 5%);
-  }
-  h2 {
-    margin: 0;
-    font-size: 1em;
-  }
-
-  h2 a,
-  h2 a.active {
-    text-decoration: none;
-  }
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  nav a {
-    padding: 1em 0.5em;
-    color: var(--black);
-    border-bottom: 4px solid transparent;
-    text-decoration: none;
-  }
-  nav a.active {
-    text-decoration: none;
-    border-bottom-color: var(--accent);
-  }
-  .social-links,
-  .social-links a {
-    display: flex;
-  }
-  @media (max-width: 720px) {
-    .social-links {
-      display: none;
-    }
-  }
-</style>
