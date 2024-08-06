@@ -1,18 +1,23 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
+import HeaderLink from "./Links.astro";
 import { Image } from "astro:assets";
 import logo from "../assets/images/logo.svg";
 ---
 
-<header class="relative bg-zinc-900 shadow-md py-4 mb-8">
+<header class="sticky top-0 bg-primaryGray shadow-md py-4 mb-8 overflow-hidden">
   <div class="container mx-auto flex justify-between items-center">
     <Image src={logo} alt="Site Logo" class="mt-2 ml-2 hidden sm:block" />
-    <nav class="flex justify-center items-center w-full">
-      <div class="internal-links flex space-x-4">
-        <HeaderLink href="/">Home</HeaderLink>
-        <HeaderLink href="/blog">Blog</HeaderLink>
-        <HeaderLink href="/about">About</HeaderLink>
-        <HeaderLink href="/contact">Contact</HeaderLink>
+    <nav class="flex justify-center items-center w-full text-white uppercase">
+      <div class="internal-links flex space-x-8 lg:space-x-16">
+        <HeaderLink href="/" class="hover:text-primaryTeal">Home</HeaderLink>
+        <HeaderLink href="/blog" class="hover:text-primaryTeal">Blog</HeaderLink
+        >
+        <HeaderLink href="/about" class="hover:text-primaryTeal"
+          >About</HeaderLink
+        >
+        <HeaderLink href="/contact" class="hover:text-primaryTeal"
+          >Contact</HeaderLink
+        >
       </div>
     </nav>
   </div>
