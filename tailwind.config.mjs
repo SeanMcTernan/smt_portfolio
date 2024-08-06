@@ -6,6 +6,7 @@ module.exports = {
 		extend: {
 			colors: {
 				primaryGray: '#202021',
+				secondaryGray: '#505459',
 				primaryTeal: '#3395ad',
 				primaryBlue: '#66cbea',
 				default: 'var(--aw-color-text-default)',
