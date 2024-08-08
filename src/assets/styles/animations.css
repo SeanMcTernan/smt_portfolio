@@ -1,0 +1,400 @@
+/* Animations */
+
+svg #curser {
+    animation-duration: 0.5s;
+    animation-name: animateLights;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  
+  svg #Light-LighBlue_1_ {
+    animation-duration: 1.75s;
+    animation-name: animateLights;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  
+  svg #Light-Pink_1_ {
+    animation-duration: 1.5s;
+    animation-delay: 0.25s;
+    animation-name: animateLights;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  
+  svg #Light-DarkBlue_1_ {
+    animation-duration: 1.75s;
+    animation-delay: 0.5s;
+    animation-name: animateLights;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  
+  @keyframes animateLights {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  svg #screen_x5F_animated {
+    animation-duration: 3s;
+    animation-name: animateScreen;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  
+  @keyframes animateScreen {
+    from {
+      transform: translateX(0);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(92px);
+      opacity: 1;
+    }
+  }
+  
+  /* Home Graphic */
+  .Graphic_x0020_Style_x0020_3 {
+    fill: url(#SVGID_1_);
+  }
+  .st0 {
+    opacity: 0.6;
+  }
+  .st1 {
+    fill: #090021;
+  }
+  .st2 {
+    opacity: 0.12;
+  }
+  .st3 {
+    fill: url(#SVGID_2_);
+  }
+  .st4 {
+    fill: #433f6b;
+  }
+  .st5 {
+    opacity: 0.26;
+  }
+  .st6 {
+    fill: url(#SVGID_3_);
+  }
+  .st7 {
+    opacity: 0.18;
+  }
+  .st8 {
+    fill: #3891ca;
+  }
+  .st9 {
+    fill: url(#Base1_2_);
+  }
+  .st10 {
+    fill: url(#Base2_2_);
+  }
+  .st11 {
+    fill: #89e5da;
+  }
+  .st12 {
+    fill: url(#Trackpad_2_);
+  }
+  .st13 {
+    fill: none;
+    stroke: url(#Trackpad_x5F_Outline_2_);
+    stroke-width: 1.01;
+    stroke-miterlimit: 10;
+  }
+  .st14 {
+    fill: url(#SVGID_4_);
+  }
+  .st15 {
+    fill: url(#SVGID_5_);
+  }
+  .st16 {
+    fill: url(#SVGID_6_);
+  }
+  .st17 {
+    fill: url(#SVGID_7_);
+  }
+  .st18 {
+    fill: url(#SVGID_8_);
+  }
+  .st19 {
+    fill: url(#SVGID_9_);
+  }
+  .st20 {
+    fill: url(#SVGID_10_);
+  }
+  .st21 {
+    fill: url(#SVGID_11_);
+  }
+  .st22 {
+    fill: url(#SVGID_12_);
+  }
+  .st23 {
+    fill: url(#SVGID_13_);
+  }
+  .st24 {
+    fill: url(#SVGID_14_);
+  }
+  .st25 {
+    fill: url(#SVGID_15_);
+  }
+  .st26 {
+    fill: url(#SVGID_16_);
+  }
+  .st27 {
+    fill: url(#SVGID_17_);
+  }
+  .st28 {
+    fill: url(#SVGID_18_);
+  }
+  .st29 {
+    fill: url(#SVGID_19_);
+  }
+  .st30 {
+    fill: url(#SVGID_20_);
+  }
+  .st31 {
+    fill: url(#SVGID_21_);
+  }
+  .st32 {
+    fill: url(#SVGID_22_);
+  }
+  .st33 {
+    fill: url(#SVGID_23_);
+  }
+  .st34 {
+    fill: url(#SVGID_24_);
+  }
+  .st35 {
+    fill: url(#SVGID_25_);
+  }
+  .st36 {
+    fill: url(#SVGID_26_);
+  }
+  .st37 {
+    fill: url(#SVGID_27_);
+  }
+  .st38 {
+    fill: url(#SVGID_28_);
+  }
+  .st39 {
+    fill: url(#SVGID_29_);
+  }
+  .st40 {
+    fill: url(#SVGID_30_);
+  }
+  .st41 {
+    fill: url(#SVGID_31_);
+  }
+  .st42 {
+    fill: url(#SVGID_32_);
+  }
+  .st43 {
+    fill: url(#SVGID_33_);
+  }
+  .st44 {
+    fill: url(#SVGID_34_);
+  }
+  .st45 {
+    fill: url(#SVGID_35_);
+  }
+  .st46 {
+    fill: url(#SVGID_36_);
+  }
+  .st47 {
+    fill: url(#SVGID_37_);
+  }
+  .st48 {
+    fill: url(#SVGID_38_);
+  }
+  .st49 {
+    fill: url(#SVGID_39_);
+  }
+  .st50 {
+    fill: url(#SVGID_40_);
+  }
+  .st51 {
+    fill: url(#SVGID_41_);
+  }
+  .st52 {
+    fill: url(#SVGID_42_);
+  }
+  .st53 {
+    fill: url(#SVGID_43_);
+  }
+  .st54 {
+    fill: url(#SVGID_44_);
+  }
+  .st55 {
+    fill: url(#SVGID_45_);
+  }
+  .st56 {
+    fill: url(#SVGID_46_);
+  }
+  .st57 {
+    fill: url(#SVGID_47_);
+  }
+  .st58 {
+    fill: url(#SVGID_48_);
+  }
+  .st59 {
+    fill: url(#SVGID_49_);
+  }
+  .st60 {
+    fill: url(#SVGID_50_);
+  }
+  .st61 {
+    fill: url(#SVGID_51_);
+  }
+  .st62 {
+    fill: url(#SVGID_52_);
+  }
+  .st63 {
+    fill: url(#SVGID_53_);
+  }
+  .st64 {
+    fill: url(#SVGID_54_);
+  }
+  .st65 {
+    fill: url(#SVGID_55_);
+  }
+  .st66 {
+    fill: url(#SVGID_56_);
+  }
+  .st67 {
+    fill: url(#SVGID_57_);
+  }
+  .st68 {
+    fill: url(#SVGID_58_);
+  }
+  .st69 {
+    fill: url(#SVGID_59_);
+  }
+  .st70 {
+    fill: url(#SVGID_60_);
+  }
+  .st71 {
+    fill: url(#SVGID_61_);
+  }
+  .st72 {
+    fill: url(#SVGID_62_);
+  }
+  .st73 {
+    fill: url(#SVGID_63_);
+  }
+  .st74 {
+    fill: url(#SVGID_64_);
+  }
+  .st75 {
+    fill: url(#SVGID_65_);
+  }
+  .st76 {
+    fill: url(#SVGID_66_);
+  }
+  .st77 {
+    fill: url(#SVGID_67_);
+  }
+  .st78 {
+    fill: url(#SVGID_68_);
+  }
+  .st79 {
+    fill: url(#SVGID_69_);
+  }
+  .st80 {
+    fill: url(#SVGID_70_);
+  }
+  .st81 {
+    fill: url(#SVGID_71_);
+  }
+  .st82 {
+    fill: url(#SVGID_72_);
+  }
+  .st83 {
+    fill: url(#SVGID_73_);
+  }
+  .st84 {
+    fill: url(#SVGID_74_);
+  }
+  .st85 {
+    fill: url(#SVGID_75_);
+  }
+  .st86 {
+    fill: url(#SVGID_76_);
+  }
+  .st87 {
+    fill: url(#SVGID_77_);
+  }
+  .st88 {
+    fill: url(#SVGID_78_);
+  }
+  .st89 {
+    fill: url(#SVGID_79_);
+  }
+  .st90 {
+    fill: url(#SVGID_80_);
+  }
+  .st91 {
+    fill: url(#SVGID_81_);
+  }
+  .st92 {
+    fill: url(#Screen_x5F_Glass_x5F_Float_2_);
+  }
+  .st93 {
+    fill: #ffffff;
+  }
+  .st94 {
+    opacity: 0.57;
+  }
+  .st95 {
+    enable-background: new;
+  }
+  .st96 {
+    clip-path: url(#SVGID_83_);
+  }
+  .st97 {
+    fill: #bf79b9;
+  }
+  .st98 {
+    fill: #66ccea;
+  }
+  .st99 {
+    fill: #1b1434;
+  }
+  .st100 {
+    fill: #b47b62;
+  }
+  .st101 {
+    fill: #0071bc;
+  }
+  .st102 {
+    fill: #8acdf5;
+  }
+  .st103 {
+    fill: #cbcc94;
+  }
+  .st104 {
+    fill: #2a6f69;
+  }
+  .st105 {
+    fill: #4d5749;
+  }
+  .st106 {
+    fill: url(#SVGID_84_);
+  }
+  .st107 {
+    fill: url(#SVGID_85_);
+  }
+  .st108 {
+    fill: #404046;
+  }
+  .st109 {
+    fill: #df15fc;
+  }
+  .st110 {
+    fill: #00a5c3;
+  }
+  
