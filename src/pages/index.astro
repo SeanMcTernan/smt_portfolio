@@ -1,5 +1,5 @@
 ---
-import { getImage } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -42,8 +42,14 @@ const optimizedBackground = await getImage({
           </a>
         </div>
       </div>
-      <div class="p-4">
-        <!-- Right column content can go here -->
+      <div class="flex justify-start items-center p-4">
+        <Image
+          src={laptop}
+          alt="Site Logo"
+          class="mt-2 ml-2 hidden sm:block"
+          width="600%"
+          height="600%"
+        />
       </div>
     </main>
     <Footer class="w-full" />
