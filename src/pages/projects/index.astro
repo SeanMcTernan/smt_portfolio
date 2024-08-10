@@ -4,28 +4,26 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { getCollection } from "astro:content";
-import FormattedDate from "../../components/FormattedDate.astro";
 import { contentfulClient } from "../../lib/contentful";
-import type { BlogPost } from "../../lib/contentful";
+import type { ProjectData } from "../../lib/contentful";
 
-const entries = await contentfulClient.getEntries<BlogPost>({
-  content_type: "blogPost",
+const entries = await contentfulClient.getEntries<ProjectData>({
+  content_type: "projectData",
 });
 
 const posts = entries.items.map((item) => {
-  const { title, date, description, slug } = item.fields;
+  const { projectTitle, infoCardDescription, slug } = item.fields;
   return {
-    title,
+    projectTitle,
     slug,
-    description,
-    date: new Date(date).toLocaleDateString(),
+    infoCardDescription,
   };
 });
 ---
 
 <html lang="en">
   <head>
-    <title>My Blog</title>
+    <title>Projects</title>
   </head>
   <body>
     <h1>My Blog</h1>
@@ -34,10 +32,9 @@ const posts = entries.items.map((item) => {
         posts.map((post) => (
           <li>
             <a href={`/projects/${post.slug}/`}>
-              <h2>{post.title}</h2>
+              <h2>{post.projectTitle}</h2>
             </a>
-            <time>{post.date}</time>
-            <p>{post.description}</p>
+            <p>{post.infoCardDescription}</p>
           </li>
         ))
       }

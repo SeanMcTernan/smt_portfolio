@@ -12,6 +12,20 @@ export interface BlogPost {
     }
 }
 
+
+export interface ProjectData {
+    contentTypeId: "projectData",
+    fields: {
+        projectTitle: EntryFieldTypes.Text
+        slug: EntryFieldTypes.Text; // the slug of the project
+        infoCardDescription: EntryFieldTypes.Text; // Description for the info card
+        projectBreakdown: EntryFieldTypes.RichText; // Detailed breakdown of the project
+        repoURL: EntryFieldTypes.Text; // URL to the project's repository
+        technologiesUsed: EntryFieldTypes.Array<EntryFieldTypes.Symbol>; // List of technologies used in the project
+        cardImage: EntryFieldTypes.AssetLink;
+    }
+}
+
 export const contentfulClient = contentful.createClient({
     space: import.meta.env.CONTENTFUL_SPACE_ID,
     accessToken: import.meta.env.DEV

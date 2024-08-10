@@ -1,0 +1,2725 @@
+{
+  "contentTypes": [
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "projectData",
+        "type": "ContentType",
+        "createdAt": "2024-08-09T21:24:21.746Z",
+        "updatedAt": "2024-08-09T22:43:48.596Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 15,
+        "publishedAt": "2024-08-09T22:43:48.596Z",
+        "firstPublishedAt": "2024-08-09T21:24:22.028Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "publishedCounter": 8,
+        "version": 16,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/r6p2jktcjgdg/environments/master/content_types/projectData"
+      },
+      "displayField": "projectTitle",
+      "name": "Project Data",
+      "description": "A Content Model to house all of the data associated with each project.",
+      "fields": [
+        {
+          "id": "projectTitle",
+          "name": "projectTitle",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "min": null,
+                "max": 100
+              },
+              "message": "Keep it short, it's just the title. "
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "infoCardDescription",
+          "name": "infoCardDescription",
+          "type": "RichText",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "min": 0,
+                "max": 250
+              },
+              "message": "Too long keep, the description brief for the project cards. "
+            },
+            {
+              "enabledMarks": [
+                "bold",
+                "underline",
+                "italic"
+              ],
+              "message": "Only bold, underline, and italic marks are allowed"
+            },
+            {
+              "enabledNodeTypes": [
+              ],
+              "message": "Nodes are not allowed"
+            },
+            {
+              "nodes": {
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "projectBreakdown",
+          "name": "Project Breakdown",
+          "type": "RichText",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "enabledMarks": [
+                "bold",
+                "italic",
+                "underline",
+                "code",
+                "superscript",
+                "subscript",
+                "strikethrough"
+              ],
+              "message": "Only bold, italic, underline, code, superscript, subscript, and strikethrough marks are allowed"
+            },
+            {
+              "enabledNodeTypes": [
+                "heading-1",
+                "heading-2",
+                "heading-3",
+                "heading-4",
+                "heading-5",
+                "heading-6",
+                "ordered-list",
+                "unordered-list",
+                "hr",
+                "blockquote",
+                "embedded-entry-block",
+                "embedded-asset-block",
+                "table",
+                "asset-hyperlink",
+                "embedded-entry-inline",
+                "entry-hyperlink",
+                "hyperlink"
+              ],
+              "message": "Only heading 1, heading 2, heading 3, heading 4, heading 5, heading 6, ordered list, unordered list, horizontal rule, quote, block entry, asset, table, link to asset, inline entry, link to entry, and link to Url nodes are allowed"
+            },
+            {
+              "nodes": {
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "repoUrl",
+          "name": "Repo URL",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "unique": true
+            },
+            {
+              "regexp": {
+                "pattern": "^(ftp|http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-/]))?$",
+                "flags": null
+              },
+              "message": "Please enter a valid URL"
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "technologiesUsed",
+          "name": "Technologies Used",
+          "type": "Array",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false,
+          "items": {
+            "type": "Link",
+            "validations": [
+              {
+                "linkContentType": [
+                  "technologies"
+                ],
+                "message": "Please select technologies used on this project "
+              }
+            ],
+            "linkType": "Entry"
+          }
+        },
+        {
+          "id": "cardImage",
+          "name": "Card Image ",
+          "type": "Link",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "linkMimetypeGroup": [
+                "image"
+              ],
+              "message": "Please upload an image"
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Asset"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "technologies",
+        "type": "ContentType",
+        "createdAt": "2024-08-09T21:45:06.628Z",
+        "updatedAt": "2024-08-09T21:45:06.940Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 1,
+        "publishedAt": "2024-08-09T21:45:06.940Z",
+        "firstPublishedAt": "2024-08-09T21:45:06.940Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 2,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/r6p2jktcjgdg/environments/master/content_types/technologies"
+      },
+      "displayField": "technologyName",
+      "name": "Technologies",
+      "description": "A content model for the content model used in your projects.",
+      "fields": [
+        {
+          "id": "technologyName",
+          "name": "Technology Name",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            },
+            {
+              "size": {
+                "min": 0,
+                "max": 50
+              },
+              "message": "Please enter a value between 0-50"
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "technologyUrl",
+          "name": "Technology URL",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "regexp": {
+                "pattern": "^(ftp|http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-/]))?$",
+                "flags": null
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "technologyLogo",
+          "name": "Technology Logo",
+          "type": "Link",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "linkMimetypeGroup": [
+                "image"
+              ],
+              "message": "File type no accepted"
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Asset"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "blogPost",
+        "type": "ContentType",
+        "createdAt": "2024-08-09T23:25:00.474Z",
+        "updatedAt": "2024-08-09T23:25:00.894Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 1,
+        "publishedAt": "2024-08-09T23:25:00.894Z",
+        "firstPublishedAt": "2024-08-09T23:25:00.894Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 2,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/r6p2jktcjgdg/environments/master/content_types/blogPost"
+      },
+      "displayField": "title",
+      "name": "Blog Post",
+      "description": "This content type is for a blog post",
+      "fields": [
+        {
+          "id": "title",
+          "name": "title",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "slug",
+          "name": "slug",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "date",
+          "name": "date",
+          "type": "Date",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "description",
+          "name": "description",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "content",
+          "name": "content",
+          "type": "RichText",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "enabledMarks": [
+                "bold",
+                "italic",
+                "underline",
+                "code",
+                "superscript",
+                "subscript",
+                "strikethrough"
+              ],
+              "message": "Only bold, italic, underline, code, superscript, subscript, and strikethrough marks are allowed"
+            },
+            {
+              "enabledNodeTypes": [
+                "heading-1",
+                "heading-2",
+                "heading-3",
+                "heading-4",
+                "heading-5",
+                "heading-6",
+                "ordered-list",
+                "unordered-list",
+                "hr",
+                "blockquote",
+                "embedded-entry-block",
+                "embedded-asset-block",
+                "table",
+                "asset-hyperlink",
+                "embedded-entry-inline",
+                "entry-hyperlink",
+                "hyperlink"
+              ],
+              "message": "Only heading 1, heading 2, heading 3, heading 4, heading 5, heading 6, ordered list, unordered list, horizontal rule, quote, block entry, asset, table, link to asset, inline entry, link to entry, and link to Url nodes are allowed"
+            },
+            {
+              "nodes": {
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        }
+      ]
+    }
+  ],
+  "tags": [
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "technologies",
+        "type": "Tag",
+        "createdAt": "2024-08-09T22:19:14.996Z",
+        "updatedAt": "2024-08-09T22:19:14.996Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "version": 1,
+        "visibility": "public"
+      },
+      "name": "Technologies"
+    }
+  ],
+  "editorInterfaces": [
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "r6p2jktcjgdg",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 16,
+        "createdAt": "2024-08-09T21:24:22.127Z",
+        "createdBy": {
+          "sys": {
+            "id": "4OPCorEu9DoRgwyuOIix2N",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2024-08-09T22:43:49.131Z",
+        "updatedBy": {
+          "sys": {
+            "id": "4OPCorEu9DoRgwyuOIix2N",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "projectData",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "projectTitle",
+          "settings": {
+            "helpText": "The title of your project for example - My portfolio site app"
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "infoCardDescription",
+          "settings": {
+            "helpText": "Give a brief description of your project. "
+          },
+          "widgetId": "richTextEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "projectBreakdown",
+          "settings": {
+            "helpText": "Describe your project - Share screenshots of your work, links descriptions details on your motivation to build the project and the time it took to build it. "
+          },
+          "widgetId": "richTextEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "repoUrl",
+          "settings": {
+            "helpText": "Share a link to the repo for this project. "
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "technologiesUsed",
+          "settings": {
+            "helpText": "Please select technologies used on this project ",
+            "bulkEditing": true,
+            "showLinkEntityAction": true,
+            "showCreateEntityAction": true
+          },
+          "widgetId": "entryLinksEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "cardImage",
+          "settings": {
+            "helpText": "Please upload an image to be used in the project card. ",
+            "showLinkEntityAction": true,
+            "showCreateEntityAction": true
+          },
+          "widgetId": "assetLinkEditor",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "r6p2jktcjgdg",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 2,
+        "createdAt": "2024-08-09T21:45:07.113Z",
+        "createdBy": {
+          "sys": {
+            "id": "4OPCorEu9DoRgwyuOIix2N",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2024-08-09T21:45:07.480Z",
+        "updatedBy": {
+          "sys": {
+            "id": "4OPCorEu9DoRgwyuOIix2N",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "technologies",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "technologyName",
+          "settings": {
+            "helpText": "Please enter of the name of the tool/technology you used. "
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "technologyUrl",
+          "settings": {
+            "helpText": "Enter the url for this particular technology. "
+          },
+          "widgetId": "urlEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "technologyLogo",
+          "settings": {
+            "helpText": "Please upload the logo for the technology used. ",
+            "showLinkEntityAction": true,
+            "showCreateEntityAction": true
+          },
+          "widgetId": "assetLinkEditor",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "r6p2jktcjgdg",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 2,
+        "createdAt": "2024-08-09T23:25:01.163Z",
+        "createdBy": {
+          "sys": {
+            "id": "4OPCorEu9DoRgwyuOIix2N",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2024-08-09T23:25:01.557Z",
+        "updatedBy": {
+          "sys": {
+            "id": "4OPCorEu9DoRgwyuOIix2N",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "blogPost",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "title",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "slug",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "date",
+          "widgetId": "datePicker",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "description",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "content",
+          "widgetId": "richTextEditor",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "oWZIOt2EA4RY3CIL7N32a",
+        "type": "Entry",
+        "createdAt": "2024-08-09T21:47:28.387Z",
+        "updatedAt": "2024-08-09T22:45:45.288Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 26,
+        "publishedAt": "2024-08-09T22:45:45.288Z",
+        "firstPublishedAt": "2024-08-09T21:57:20.166Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "publishedCounter": 4,
+        "version": 27,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "automationTags": [
+        ],
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "projectData"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/r6p2jktcjgdg/environments/master/entries/oWZIOt2EA4RY3CIL7N32a"
+      },
+      "fields": {
+        "projectTitle": {
+          "en-US": "RiverText"
+        },
+        "infoCardDescription": {
+          "en-US": {
+            "data": {
+            },
+            "content": [
+              {
+                "data": {
+                },
+                "content": [
+                  {
+                    "data": {
+                    },
+                    "marks": [
+                    ],
+                    "value": "RiverText is a system that allows users to receive river flow information from The Canadian Water Office by sending a message from a satellite phone or any SMS enabled device.",
+                    "nodeType": "text"
+                  }
+                ],
+                "nodeType": "paragraph"
+              },
+              {
+                "data": {
+                },
+                "content": [
+                  {
+                    "data": {
+                    },
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "value": "",
+                    "nodeType": "text"
+                  }
+                ],
+                "nodeType": "paragraph"
+              },
+              {
+                "data": {
+                },
+                "content": [
+                  {
+                    "data": {
+                    },
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "value": "",
+                    "nodeType": "text"
+                  }
+                ],
+                "nodeType": "paragraph"
+              }
+            ],
+            "nodeType": "document"
+          }
+        },
+        "projectBreakdown": {
+          "en-US": {
+            "data": {
+            },
+            "content": [
+              {
+                "data": {
+                },
+                "content": [
+                  {
+                    "data": {
+                    },
+                    "marks": [
+                    ],
+                    "value": "Motivation",
+                    "nodeType": "text"
+                  }
+                ],
+                "nodeType": "heading-2"
+              },
+              {
+                "data": {
+                },
+                "content": [
+                  {
+                    "data": {
+                    },
+                    "marks": [
+                    ],
+                    "value": "In 2019, I was fortunate enough to successfully kayak down one of the most challenging stretches of whitewater on the planet in Northern BC. The Grand Canyon of the Stikine. Traditionally, the run takes 3 days, so within those 3 days much can change as far as the river level is concerned. Each evening I sent a message via satellite phone to a friend to ask what the current level on the river was, I would have to wait for him to check his phone, then the government website for an accurate flow reading, then reply. It was quite cumbersome. From this, the idea for this app was created. An app that would sit and listen for inbound requests for river levels on a given set of rivers and reply with the latest reading. To set myself an additional challenge I decided to write this app in TypeScript. I had not yet built a live app via Typescript, so I thought this would be a great opportunity to apply what I had learned in some courses I was taking. The app as it stands is in its raw form. Going forward I would like to have a front end to show a map of rivers that are available and add a host server for remote to send flow data from gauge projects we are also working on.",
+                    "nodeType": "text"
+                  }
+                ],
+                "nodeType": "paragraph"
+              },
+              {
+                "data": {
+                },
+                "content": [
+                  {
+                    "data": {
+                    },
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "value": "Development Time: 1 Week",
+                    "nodeType": "text"
+                  }
+                ],
+                "nodeType": "paragraph"
+              },
+              {
+                "data": {
+                  "target": {
+                    "sys": {
+                      "id": "5F6oDNNEJC2M5E9DhoRgwl",
+                      "type": "Link",
+                      "linkType": "Asset"
+                    }
+                  }
+                },
+                "content": [
+                ],
+                "nodeType": "embedded-asset-block"
+              },
+              {
+                "data": {
+                },
+                "content": [
+                  {
+                    "data": {
+                    },
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "value": "",
+                    "nodeType": "text"
+                  }
+                ],
+                "nodeType": "paragraph"
+              }
+            ],
+            "nodeType": "document"
+          }
+        },
+        "repoUrl": {
+          "en-US": "https://github.com/SeanMcTernan/RiverText"
+        },
+        "technologiesUsed": {
+          "en-US": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "GZwtWwDVgm7zwTWKklB5Y"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "33rsQYkpRirHNGyteMHk31"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "293q7utjOFPXsprHwtYVNg"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "zK02iex9LuTBUVPEF3fFW"
+              }
+            }
+          ]
+        },
+        "cardImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "5F6oDNNEJC2M5E9DhoRgwl"
+            }
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "zK02iex9LuTBUVPEF3fFW",
+        "type": "Entry",
+        "createdAt": "2024-08-09T21:52:57.248Z",
+        "updatedAt": "2024-08-09T21:56:29.428Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 4,
+        "publishedAt": "2024-08-09T21:56:29.428Z",
+        "firstPublishedAt": "2024-08-09T21:56:29.428Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 5,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "automationTags": [
+        ],
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "technologies"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/r6p2jktcjgdg/environments/master/entries/zK02iex9LuTBUVPEF3fFW"
+      },
+      "fields": {
+        "technologyName": {
+          "en-US": "JavaScript"
+        },
+        "technologyUrl": {
+          "en-US": "https://www.javascript.com/"
+        },
+        "technologyLogo": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "6NPmWvgIAV3ZHP2K2mDmQ2"
+            }
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "293q7utjOFPXsprHwtYVNg",
+        "type": "Entry",
+        "createdAt": "2024-08-09T21:57:30.659Z",
+        "updatedAt": "2024-08-09T22:05:33.925Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 4,
+        "publishedAt": "2024-08-09T22:05:33.925Z",
+        "firstPublishedAt": "2024-08-09T22:05:33.925Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 5,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "automationTags": [
+        ],
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "technologies"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/r6p2jktcjgdg/environments/master/entries/293q7utjOFPXsprHwtYVNg"
+      },
+      "fields": {
+        "technologyName": {
+          "en-US": "TypeScript"
+        },
+        "technologyUrl": {
+          "en-US": "https://www.typescriptlang.org/"
+        },
+        "technologyLogo": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "4xHWfMYkzm1x7isKuAOlxY"
+            }
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "33rsQYkpRirHNGyteMHk31",
+        "type": "Entry",
+        "createdAt": "2024-08-09T22:06:00.526Z",
+        "updatedAt": "2024-08-09T22:07:13.718Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 4,
+        "publishedAt": "2024-08-09T22:07:13.718Z",
+        "firstPublishedAt": "2024-08-09T22:07:13.718Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 5,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "automationTags": [
+        ],
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "technologies"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/r6p2jktcjgdg/environments/master/entries/33rsQYkpRirHNGyteMHk31"
+      },
+      "fields": {
+        "technologyName": {
+          "en-US": "NodeJS"
+        },
+        "technologyUrl": {
+          "en-US": "https://nodejs.org/en/"
+        },
+        "technologyLogo": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "1wXjWWUTHXLncdKVfybPQK"
+            }
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "6sQRIxRPbHMS97b6UDegPO",
+        "type": "Entry",
+        "createdAt": "2024-08-09T22:07:30.025Z",
+        "updatedAt": "2024-08-09T22:18:41.888Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 4,
+        "publishedAt": "2024-08-09T22:18:41.888Z",
+        "firstPublishedAt": "2024-08-09T22:18:41.888Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 5,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "automationTags": [
+        ],
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "technologies"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/r6p2jktcjgdg/environments/master/entries/6sQRIxRPbHMS97b6UDegPO"
+      },
+      "fields": {
+        "technologyName": {
+          "en-US": "NPM"
+        },
+        "technologyUrl": {
+          "en-US": "https://www.npmjs.com/"
+        },
+        "technologyLogo": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "5Abf0Jd3uT3lxCawFvBXsQ"
+            }
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "30mBAu6tEe4BWYZo97Zo5R",
+        "type": "Entry",
+        "createdAt": "2024-08-09T22:10:35.039Z",
+        "updatedAt": "2024-08-09T22:11:37.497Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 4,
+        "publishedAt": "2024-08-09T22:11:37.497Z",
+        "firstPublishedAt": "2024-08-09T22:11:37.497Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 5,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "automationTags": [
+        ],
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "technologies"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/r6p2jktcjgdg/environments/master/entries/30mBAu6tEe4BWYZo97Zo5R"
+      },
+      "fields": {
+        "technologyName": {
+          "en-US": "React"
+        },
+        "technologyUrl": {
+          "en-US": "https://reactjs.org/"
+        },
+        "technologyLogo": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "630mqRpFjRbCdOy8paEybI"
+            }
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "GZwtWwDVgm7zwTWKklB5Y",
+        "type": "Entry",
+        "createdAt": "2024-08-09T22:11:47.499Z",
+        "updatedAt": "2024-08-09T22:18:21.106Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 6,
+        "publishedAt": "2024-08-09T22:18:21.106Z",
+        "firstPublishedAt": "2024-08-09T22:18:21.106Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 7,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "automationTags": [
+        ],
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "technologies"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/r6p2jktcjgdg/environments/master/entries/GZwtWwDVgm7zwTWKklB5Y"
+      },
+      "fields": {
+        "technologyName": {
+          "en-US": "Heroku"
+        },
+        "technologyUrl": {
+          "en-US": "https://www.heroku.com/"
+        },
+        "technologyLogo": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "3yAoljnqbJkfcbKZel0fjg"
+            }
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "7iuB7zF5N2pbr6KvO7oJpy",
+        "type": "Entry",
+        "createdAt": "2024-08-09T23:25:16.815Z",
+        "updatedAt": "2024-08-09T23:26:25.591Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 5,
+        "publishedAt": "2024-08-09T23:26:25.591Z",
+        "firstPublishedAt": "2024-08-09T23:26:25.591Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 6,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "automationTags": [
+        ],
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "blogPost"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/r6p2jktcjgdg/environments/master/entries/7iuB7zF5N2pbr6KvO7oJpy"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Astro is amazing!"
+        },
+        "slug": {
+          "en-US": "astro-is-amazing"
+        },
+        "date": {
+          "en-US": "2024-08-09T00:00-04:00"
+        },
+        "description": {
+          "en-US": "This is my first blog post!"
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "2XkTVzsZl61pBrF9iWe64V",
+        "type": "Entry",
+        "createdAt": "2024-08-09T23:49:58.877Z",
+        "updatedAt": "2024-08-09T23:51:06.899Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 10,
+        "publishedAt": "2024-08-09T23:51:06.899Z",
+        "firstPublishedAt": "2024-08-09T23:51:06.899Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 11,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "automationTags": [
+        ],
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "blogPost"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/r6p2jktcjgdg/environments/master/entries/2XkTVzsZl61pBrF9iWe64V"
+      },
+      "fields": {
+        "title": {
+          "en-US": "I really like Astro "
+        },
+        "slug": {
+          "en-US": "i-really-like-astro"
+        },
+        "date": {
+          "en-US": "2024-08-01T00:00-04:00"
+        },
+        "description": {
+          "en-US": "A blog post about how much I like Astro"
+        },
+        "content": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {
+            },
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {
+                },
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "This is my second blog post!",
+                    "marks": [
+                    ],
+                    "data": {
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "assets": [
+    {
+      "metadata": {
+        "tags": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "5F6oDNNEJC2M5E9DhoRgwl",
+        "type": "Asset",
+        "createdAt": "2024-08-09T21:50:31.537Z",
+        "updatedAt": "2024-08-09T21:52:01.441Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 6,
+        "publishedAt": "2024-08-09T21:52:01.441Z",
+        "firstPublishedAt": "2024-08-09T21:52:01.441Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 7,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/r6p2jktcjgdg/environments/master/assets/5F6oDNNEJC2M5E9DhoRgwl"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Screenshot of RiverText being used"
+        },
+        "description": {
+          "en-US": "RiverText being used on a satellite phone\n\n\n"
+        },
+        "file": {
+          "en-US": {
+            "url": "//images.ctfassets.net/r6p2jktcjgdg/5F6oDNNEJC2M5E9DhoRgwl/d82b0a662a22cfebcf7021f952c85cb9/RiverText.d4a65dad.jpg",
+            "details": {
+              "size": 121784,
+              "image": {
+                "width": 545,
+                "height": 450
+              }
+            },
+            "fileName": "RiverText.d4a65dad.jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "6NPmWvgIAV3ZHP2K2mDmQ2",
+        "type": "Asset",
+        "createdAt": "2024-08-09T21:54:02.065Z",
+        "updatedAt": "2024-08-09T21:56:21.618Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 4,
+        "publishedAt": "2024-08-09T21:56:21.618Z",
+        "firstPublishedAt": "2024-08-09T21:56:21.618Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 5,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/r6p2jktcjgdg/environments/master/assets/6NPmWvgIAV3ZHP2K2mDmQ2"
+      },
+      "fields": {
+        "title": {
+          "en-US": "javascript"
+        },
+        "description": {
+          "en-US": "javascript icon"
+        },
+        "file": {
+          "en-US": {
+            "url": "//images.ctfassets.net/r6p2jktcjgdg/6NPmWvgIAV3ZHP2K2mDmQ2/b2ea87ff8d17e3f0d8d8eb219b616396/javascript.svg",
+            "details": {
+              "size": 1583,
+              "image": {
+                "width": 512,
+                "height": 512
+              }
+            },
+            "fileName": "javascript.svg",
+            "contentType": "image/svg+xml"
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "4xHWfMYkzm1x7isKuAOlxY",
+        "type": "Asset",
+        "createdAt": "2024-08-09T22:03:57.047Z",
+        "updatedAt": "2024-08-09T22:05:21.428Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 5,
+        "publishedAt": "2024-08-09T22:05:21.428Z",
+        "firstPublishedAt": "2024-08-09T22:05:21.428Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 6,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/r6p2jktcjgdg/environments/master/assets/4xHWfMYkzm1x7isKuAOlxY"
+      },
+      "fields": {
+        "title": {
+          "en-US": "TypeScript"
+        },
+        "description": {
+          "en-US": "TypeScript Logo"
+        },
+        "file": {
+          "en-US": {
+            "url": "//images.ctfassets.net/r6p2jktcjgdg/4xHWfMYkzm1x7isKuAOlxY/cf452a5d35dd707ceb5ba8d8daa519db/typescript.svg",
+            "details": {
+              "size": 1114,
+              "image": {
+                "width": 512,
+                "height": 512
+              }
+            },
+            "fileName": "typescript.svg",
+            "contentType": "image/svg+xml"
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "1wXjWWUTHXLncdKVfybPQK",
+        "type": "Asset",
+        "createdAt": "2024-08-09T22:06:18.140Z",
+        "updatedAt": "2024-08-09T22:07:06.753Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 5,
+        "publishedAt": "2024-08-09T22:07:06.753Z",
+        "firstPublishedAt": "2024-08-09T22:07:06.753Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 6,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/r6p2jktcjgdg/environments/master/assets/1wXjWWUTHXLncdKVfybPQK"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Node JS"
+        },
+        "description": {
+          "en-US": "Node JS Logo"
+        },
+        "file": {
+          "en-US": {
+            "url": "//images.ctfassets.net/r6p2jktcjgdg/1wXjWWUTHXLncdKVfybPQK/769bb366668932cfde2cdfa30a41cdfb/nodejs.svg",
+            "details": {
+              "size": 2344,
+              "image": {
+                "width": 512,
+                "height": 512
+              }
+            },
+            "fileName": "nodejs.svg",
+            "contentType": "image/svg+xml"
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "5Abf0Jd3uT3lxCawFvBXsQ",
+        "type": "Asset",
+        "createdAt": "2024-08-09T22:08:01.200Z",
+        "updatedAt": "2024-08-09T22:10:26.169Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 4,
+        "publishedAt": "2024-08-09T22:10:26.169Z",
+        "firstPublishedAt": "2024-08-09T22:10:26.169Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 5,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/r6p2jktcjgdg/environments/master/assets/5Abf0Jd3uT3lxCawFvBXsQ"
+      },
+      "fields": {
+        "title": {
+          "en-US": "NPM"
+        },
+        "description": {
+          "en-US": "NPM Logo"
+        },
+        "file": {
+          "en-US": {
+            "url": "//images.ctfassets.net/r6p2jktcjgdg/5Abf0Jd3uT3lxCawFvBXsQ/41e9c78b3acf338f1c826ebc7a78a1c4/npm.svg",
+            "details": {
+              "size": 1297,
+              "image": {
+                "width": 512,
+                "height": 512
+              }
+            },
+            "fileName": "npm.svg",
+            "contentType": "image/svg+xml"
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "630mqRpFjRbCdOy8paEybI",
+        "type": "Asset",
+        "createdAt": "2024-08-09T22:10:55.125Z",
+        "updatedAt": "2024-08-09T22:11:32.782Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 5,
+        "publishedAt": "2024-08-09T22:11:32.782Z",
+        "firstPublishedAt": "2024-08-09T22:11:32.782Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 6,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/r6p2jktcjgdg/environments/master/assets/630mqRpFjRbCdOy8paEybI"
+      },
+      "fields": {
+        "title": {
+          "en-US": "React"
+        },
+        "description": {
+          "en-US": "React Logo"
+        },
+        "file": {
+          "en-US": {
+            "url": "//images.ctfassets.net/r6p2jktcjgdg/630mqRpFjRbCdOy8paEybI/4839361c2044d70beb32be60abb4c2a8/react.svg",
+            "details": {
+              "size": 5166,
+              "image": {
+                "width": 512,
+                "height": 512
+              }
+            },
+            "fileName": "react.svg",
+            "contentType": "image/svg+xml"
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "id": "3yAoljnqbJkfcbKZel0fjg",
+        "type": "Asset",
+        "createdAt": "2024-08-09T22:17:34.171Z",
+        "updatedAt": "2024-08-09T22:18:15.036Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 6,
+        "publishedAt": "2024-08-09T22:18:15.036Z",
+        "firstPublishedAt": "2024-08-09T22:18:15.036Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 7,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/r6p2jktcjgdg/environments/master/assets/3yAoljnqbJkfcbKZel0fjg"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Heroku"
+        },
+        "description": {
+          "en-US": "Heroku Logo"
+        },
+        "file": {
+          "en-US": {
+            "url": "//images.ctfassets.net/r6p2jktcjgdg/3yAoljnqbJkfcbKZel0fjg/a584ee8ae9458cb99eb7cf0e1c0549ea/heroku.svg",
+            "details": {
+              "size": 812,
+              "image": {
+                "width": 512,
+                "height": 512
+              }
+            },
+            "fileName": "heroku.svg",
+            "contentType": "image/svg+xml"
+          }
+        }
+      }
+    }
+  ],
+  "locales": [
+    {
+      "name": "English (United States)",
+      "code": "en-US",
+      "fallbackCode": null,
+      "default": true,
+      "contentManagementApi": true,
+      "contentDeliveryApi": true,
+      "optional": false,
+      "sys": {
+        "type": "Locale",
+        "id": "2B1YB0ORy07hmd0ARFPioG",
+        "version": 1,
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "environment": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Environment",
+            "id": "master",
+            "uuid": "2851153e-dcd2-4190-a008-a6382fbc0d34"
+          }
+        },
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "createdAt": "2024-08-09T13:22:21Z",
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedAt": "2024-08-09T13:22:21Z"
+      }
+    }
+  ],
+  "webhooks": [
+  ],
+  "roles": [
+    {
+      "name": "Author",
+      "description": "Allows editing of content",
+      "policies": [
+        {
+          "effect": "allow",
+          "actions": [
+            "create"
+          ],
+          "constraint": {
+            "and": [
+              {
+                "equals": [
+                  {
+                    "doc": "sys.type"
+                  },
+                  "Entry"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "effect": "allow",
+          "actions": [
+            "read"
+          ],
+          "constraint": {
+            "and": [
+              {
+                "equals": [
+                  {
+                    "doc": "sys.type"
+                  },
+                  "Entry"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "effect": "allow",
+          "actions": [
+            "update"
+          ],
+          "constraint": {
+            "and": [
+              {
+                "equals": [
+                  {
+                    "doc": "sys.type"
+                  },
+                  "Entry"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "effect": "allow",
+          "actions": [
+            "create"
+          ],
+          "constraint": {
+            "and": [
+              {
+                "equals": [
+                  {
+                    "doc": "sys.type"
+                  },
+                  "Asset"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "effect": "allow",
+          "actions": [
+            "read"
+          ],
+          "constraint": {
+            "and": [
+              {
+                "equals": [
+                  {
+                    "doc": "sys.type"
+                  },
+                  "Asset"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "effect": "allow",
+          "actions": [
+            "update"
+          ],
+          "constraint": {
+            "and": [
+              {
+                "equals": [
+                  {
+                    "doc": "sys.type"
+                  },
+                  "Asset"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "permissions": {
+        "ContentModel": [
+          "read"
+        ],
+        "Settings": [
+        ],
+        "ContentDelivery": [
+        ],
+        "Environments": [
+        ],
+        "EnvironmentAliases": [
+        ],
+        "Tags": [
+        ]
+      },
+      "sys": {
+        "type": "Role",
+        "id": "2BrTvhnFx9PixNCw32GhVo",
+        "version": 0,
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "createdAt": "2024-08-09T13:22:22Z",
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedAt": "2024-08-09T13:22:22Z"
+      }
+    },
+    {
+      "name": "Editor",
+      "description": "Allows editing, publishing and archiving of content",
+      "policies": [
+        {
+          "effect": "allow",
+          "actions": "all",
+          "constraint": {
+            "and": [
+              {
+                "equals": [
+                  {
+                    "doc": "sys.type"
+                  },
+                  "Entry"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "effect": "allow",
+          "actions": "all",
+          "constraint": {
+            "and": [
+              {
+                "equals": [
+                  {
+                    "doc": "sys.type"
+                  },
+                  "Asset"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "permissions": {
+        "ContentModel": [
+          "read"
+        ],
+        "Settings": [
+        ],
+        "ContentDelivery": [
+        ],
+        "Environments": [
+        ],
+        "EnvironmentAliases": [
+        ],
+        "Tags": [
+        ]
+      },
+      "sys": {
+        "type": "Role",
+        "id": "2BspYsVa8WhdqzH96zSYK6",
+        "version": 0,
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "createdAt": "2024-08-09T13:22:22Z",
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedAt": "2024-08-09T13:22:22Z"
+      }
+    },
+    {
+      "name": "Translator",
+      "description": "Allows editing of localized fields in the specified language",
+      "policies": [
+        {
+          "effect": "allow",
+          "actions": [
+            "read"
+          ],
+          "constraint": {
+            "and": [
+              {
+                "equals": [
+                  {
+                    "doc": "sys.type"
+                  },
+                  "Entry"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "effect": "allow",
+          "actions": [
+            "read"
+          ],
+          "constraint": {
+            "and": [
+              {
+                "equals": [
+                  {
+                    "doc": "sys.type"
+                  },
+                  "Asset"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "effect": "allow",
+          "actions": [
+            "update"
+          ],
+          "constraint": {
+            "and": [
+              {
+                "equals": [
+                  {
+                    "doc": "sys.type"
+                  },
+                  "Entry"
+                ]
+              },
+              {
+                "paths": [
+                  {
+                    "doc": "fields.%.%"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "effect": "allow",
+          "actions": [
+            "update"
+          ],
+          "constraint": {
+            "and": [
+              {
+                "equals": [
+                  {
+                    "doc": "sys.type"
+                  },
+                  "Asset"
+                ]
+              },
+              {
+                "paths": [
+                  {
+                    "doc": "fields.%.%"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "permissions": {
+        "ContentModel": [
+          "read"
+        ],
+        "Settings": [
+        ],
+        "ContentDelivery": [
+        ],
+        "Environments": [
+        ],
+        "EnvironmentAliases": [
+        ],
+        "Tags": [
+        ]
+      },
+      "sys": {
+        "type": "Role",
+        "id": "2BsUIqKbpyxrV8NIOwLJFM",
+        "version": 0,
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "r6p2jktcjgdg"
+          }
+        },
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "createdAt": "2024-08-09T13:22:22Z",
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4OPCorEu9DoRgwyuOIix2N"
+          }
+        },
+        "updatedAt": "2024-08-09T13:22:22Z"
+      }
+    }
+  ]
+}
