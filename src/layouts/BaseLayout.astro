@@ -1,0 +1,30 @@
+---
+import { getImage } from "astro:assets";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import backgroundImage from "../assets/images/logo-bg.svg";
+//Import the Animations to be applied to the elements
+import "../assets/styles/animations.css";
+//Optimize the background image
+const optimizedBackground = await getImage({
+  src: backgroundImage,
+  format: "webp",
+});
+---
+
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body
+    class="h-full flex flex-col text-primary"
+    style={`background-image: url(${optimizedBackground.src}); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center; overscroll-behavior: none;`}
+  >
+    <Header class="w-full" />
+    <slot />
+    <Footer class="w-full" />
+  </body>
+</html>

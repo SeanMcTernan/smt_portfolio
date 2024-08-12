@@ -12,16 +12,24 @@ export interface BlogPost {
     }
 }
 
+interface Technologies {
+    contentTypeId: "technologies",
+    fields: {
+        technologyName: EntryFieldTypes.Text;
+        technologyUrl: EntryFieldTypes.Text;
+        technologyLogo: EntryFieldTypes.AssetLink;
+    }
+}
 
 export interface ProjectData {
     contentTypeId: "projectData",
     fields: {
-        projectTitle: EntryFieldTypes.Text
+        projectTitle: EntryFieldTypes.Text;
         slug: EntryFieldTypes.Text; // the slug of the project
         infoCardDescription: EntryFieldTypes.Text; // Description for the info card
         projectBreakdown: EntryFieldTypes.RichText; // Detailed breakdown of the project
         repoURL: EntryFieldTypes.Text; // URL to the project's repository
-        technologiesUsed: EntryFieldTypes.Array<EntryFieldTypes.Symbol>; // List of technologies used in the project
+        technologiesUsed: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<Technologies>>; // List of technologies used in the project
         cardImage: EntryFieldTypes.AssetLink;
     }
 }
