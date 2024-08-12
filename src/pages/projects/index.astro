@@ -7,7 +7,7 @@ const entries = await contentfulClient.getEntries<ProjectData>({
   content_type: "projectData",
 });
 
-const posts = entries.items.map((item: { fields: ProjectData["fields"] }) => {
+const posts = entries.items.map((item) => {
   const { projectTitle, infoCardDescription, slug } = item.fields;
   return {
     projectTitle,
