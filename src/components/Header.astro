@@ -8,19 +8,12 @@ import logo from "../assets/images/logo.svg";
   <div class="container mx-auto flex justify-between items-center">
     <Image src={logo} alt="Site Logo" class="mt-2 ml-2 hidden sm:block" />
     <nav class="flex justify-center items-center w-full text-white uppercase">
-      <div class="internal-links flex space-x-8 lg:space-x-16">
+      <div class="internal-links flex space-x-4 sm:space-x-8 lg:space-x-16 text-xs sm:text-sm md:text-base">
         <HeaderLink href="/" class="hover:text-primaryTeal">Home</HeaderLink>
-        <HeaderLink href="/projects" class="hover:text-primaryTeal"
-          >Projects</HeaderLink
-        >
-        <HeaderLink href="/blog" class="hover:text-primaryTeal">Blog</HeaderLink
-        >
-        <HeaderLink href="/about" class="hover:text-primaryTeal"
-          >About</HeaderLink
-        >
-        <HeaderLink href="/contact" class="hover:text-primaryTeal"
-          >Contact</HeaderLink
-        >
+        <HeaderLink href="/projects" class="hover:text-primaryTeal">Projects</HeaderLink>
+        <HeaderLink href="/blog" class="hover:text-primaryTeal">Blog</HeaderLink>
+        <HeaderLink href="/about" class="hover:text-primaryTeal">About</HeaderLink>
+        <HeaderLink href="/contact" class="hover:text-primaryTeal">Contact</HeaderLink>
       </div>
     </nav>
   </div>
