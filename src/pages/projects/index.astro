@@ -7,14 +7,14 @@ const entries = await contentfulClient.getEntries<ProjectData>({
   content_type: "projectData",
 });
 
-const posts = entries.items.map((item) => {
-  const { projectTitle, infoCardDescription, slug } = item.fields;
-  return {
-    projectTitle,
-    slug,
-    infoCardDescription,
-  };
-});
+// const posts = entries.items.map((item) => {
+//   const { projectTitle, infoCardDescription, slug } = item.fields;
+//   return {
+//     projectTitle,
+//     slug,
+//     infoCardDescription,
+//   };
+// });
 ---
 
 <BaseLayout
@@ -23,12 +23,12 @@ const posts = entries.items.map((item) => {
 >
   <ul>
     {
-      posts.map((post) => (
+      entries.items.map((item) => (
         <li>
-          <a href={`/projects/${post.slug}/`}>
-            <h2>{post.projectTitle}</h2>
+          <a href={`/projects/${item.fields.slug}/`}>
+            <h2>{item.fields.projectTitle}</h2>
           </a>
-          <p>{post.infoCardDescription}</p>
+          <p>{item.fields.infoCardDescription}</p>
         </li>
       ))
     }

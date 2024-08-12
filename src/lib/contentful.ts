@@ -24,7 +24,7 @@ interface Technologies {
 export interface ProjectData {
     contentTypeId: "projectData",
     fields: {
-        projectTitle: EntryFieldTypes.Text,
+        projectTitle: EntryFieldTypes.Text, // Title of the project
         slug: EntryFieldTypes.Text, // the slug of the project
         infoCardDescription: EntryFieldTypes.Text, // Description for the info card
         projectBreakdown: EntryFieldTypes.RichText, // Detailed breakdown of the project
