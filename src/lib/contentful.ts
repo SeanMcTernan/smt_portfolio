@@ -24,13 +24,13 @@ interface Technologies {
 export interface ProjectData {
     contentTypeId: "projectData",
     fields: {
-        projectTitle: EntryFieldTypes.Text;
-        slug: EntryFieldTypes.Text; // the slug of the project
-        infoCardDescription: EntryFieldTypes.Text; // Description for the info card
-        projectBreakdown: EntryFieldTypes.RichText; // Detailed breakdown of the project
-        repoURL: EntryFieldTypes.Text; // URL to the project's repository
-        technologiesUsed: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<Technologies>>; // List of technologies used in the project
-        cardImage: EntryFieldTypes.AssetLink;
+        projectTitle: EntryFieldTypes.Text,
+        slug: EntryFieldTypes.Text, // the slug of the project
+        infoCardDescription: EntryFieldTypes.Text, // Description for the info card
+        projectBreakdown: EntryFieldTypes.RichText, // Detailed breakdown of the project
+        repoURL: EntryFieldTypes.Text, // URL to the project's repository
+        technologiesUsed: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<Technologies>>, // List of technologies used in the project
+        cardImage: EntryFieldTypes.AssetLink
     }
 }
 
