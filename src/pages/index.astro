@@ -1,8 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-//Import the Animations to be applied to the elements
+// Import the Animations to be applied to the elements
 import "../assets/styles/animations.css";
-//Extract the RAW SVG code from the SVG file
+// Extract the RAW SVG code from the SVG file
 const { default: rawSvgContent } = await import(
   "../assets/images/laptop.svg?raw"
 );
@@ -12,15 +12,15 @@ const { default: rawSvgContent } = await import(
   pageTitle="Home"
   pageDescription="Welcome to my portfolio. Explore my projects and skills."
 >
-  <main class="flex-grow grid grid-cols-1 md:grid-cols-2 gap-4">
+  <main class="flex-grow grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
     <div
-      class="flex flex-col justify-center items-start lg:items-end p-4 lg:mt-[-10rem]"
+      class="flex flex-col justify-center items-start lg:items-end p-4 lg:mt-[-10rem] h-full"
     >
-      <div class="max-w-lg lg:mr-0">
+      <div class="max-w-lg lg:mr-0 mt-40">
         <h1 class="text-white font-medium leading-tight text-4xl">
           Welcome to Seán Mc Ternan's Portfolio
         </h1>
-        <p class="text-white mt-4">
+        <p class="text-white mt-4 mb-10">
           Thank you for taking the time to visit my portfolio website. If you
           have any questions, please contact me through the contact page. To
           view hidden code repositories, download my resume and more, please
@@ -34,7 +34,7 @@ const { default: rawSvgContent } = await import(
         </a>
       </div>
     </div>
-    <div class="flex justify-start items-center p-4">
+    <div class="flex justify-center items-center p-4 h-full">
       <svg
         class="mt-2 ml-2 hidden sm:block"
         width="80%"
