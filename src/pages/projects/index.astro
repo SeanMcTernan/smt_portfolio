@@ -3,25 +3,25 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { contentfulClient } from "../../lib/contentful";
 import type { ProjectData } from "../../lib/contentful";
 
-const entries = await contentfulClient.getEntries<ProjectData>({
-  content_type: "projectData",
-});
+// const entries = await contentfulClient.getEntries<ProjectData>({
+//   content_type: "projectData",
+// });
 
-const posts = entries.items.map((item) => {
-  const { projectTitle, infoCardDescription, slug } = item.fields;
-  return {
-    projectTitle,
-    slug,
-    infoCardDescription,
-  };
-});
+// const posts = entries.items.map((item) => {
+//   const { projectTitle, infoCardDescription, slug } = item.fields;
+//   return {
+//     projectTitle,
+//     slug,
+//     infoCardDescription,
+//   };
+// });
 ---
 
 <BaseLayout
   pageTitle="Projects"
   pageDescription="Explore my projects and skills."
 >
-  <ul>
+  <!-- <ul>
     {
       posts.map((post) => (
         <li>
@@ -32,5 +32,5 @@ const posts = entries.items.map((item) => {
         </li>
       ))
     }
-  </ul>
+  </ul> -->
 </BaseLayout>
