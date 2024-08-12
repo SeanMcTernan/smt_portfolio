@@ -7,14 +7,6 @@ const entries = await contentfulClient.getEntries<ProjectData>({
   content_type: "projectData",
 });
 
-// const posts = entries.items.map((item) => {
-//   const { projectTitle, infoCardDescription, slug } = item.fields;
-//   return {
-//     projectTitle,
-//     slug,
-//     infoCardDescription,
-//   };
-// });
 ---
 
 <BaseLayout
@@ -25,6 +17,7 @@ const entries = await contentfulClient.getEntries<ProjectData>({
     {
       entries.items.map((item) => (
         <li>
+            <img src={item.fields.cardImage.fields.file.url} alt={item.fields.cardImage.fields.title} />
           <a href={`/projects/${item.fields.slug}/`}>
             <h2>{item.fields.projectTitle}</h2>
           </a>
