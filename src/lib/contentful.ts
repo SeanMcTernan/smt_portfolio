@@ -30,7 +30,15 @@ export interface ProjectData {
         projectBreakdown: EntryFieldTypes.RichText, // Detailed breakdown of the project
         repoURL: EntryFieldTypes.Text, // URL to the project's repository
         technologiesUsed: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<Technologies>>, // List of technologies used in the project
-        cardImage: EntryFieldTypes.AssetLink
+        cardImage: {
+            fields: {
+                title: EntryFieldTypes.Text,
+                description: EntryFieldTypes.Text,
+                file: {
+                    url: EntryFieldTypes.AssetLink
+                }
+            }
+        }
     }
 }
 

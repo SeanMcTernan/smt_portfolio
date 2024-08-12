@@ -6,7 +6,7 @@ import type { ProjectData } from "../../lib/contentful";
 const entries = await contentfulClient.getEntries<ProjectData>({
   content_type: "projectData",
 });
-
+console.log(entries.items);
 ---
 
 <BaseLayout
