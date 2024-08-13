@@ -11,17 +11,16 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import type { EntryFieldTypes } from "contentful";
 
 interface BlogPost {
-  contentTypeId: "blogPost",
+  contentTypeId: "blogPost";
   fields: {
-    title: EntryFieldTypes.Text,
-    content: EntryFieldTypes.RichText
+    title: EntryFieldTypes.Text;
+    content: EntryFieldTypes.RichText;
   };
 }
 
 const entries = await contentfulClient.getEntries<BlogPost>({
   content_type: "blogPost",
 });
-
 ---
 
 <body>
