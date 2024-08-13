@@ -1,12 +1,11 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { contentfulClient } from "../../lib/contentful";
-import type { ProjectData } from "../../lib/contentful";
+import type { TypeProjectData } from "../../lib/contentful";
 
-const entries = await contentfulClient.getEntries<ProjectData>({
+const entries = await contentfulClient.getEntries<TypeProjectData>({
   content_type: "projectData",
 });
-console.log(entries.items);
 ---
 
 <BaseLayout
@@ -17,7 +16,10 @@ console.log(entries.items);
     {
       entries.items.map((item) => (
         <li>
-            <img src={item.fields.cardImage.fields.file.url} alt={item.fields.cardImage.fields.title} />
+          <img
+            src={item.fields.cardImage.fields.file.url}
+            alt={item.fields.cardImage.fields.title}
+          />
           <a href={`/projects/${item.fields.slug}/`}>
             <h2>{item.fields.projectTitle}</h2>
           </a>

@@ -1,9 +1,32 @@
 import contentful from "contentful";
-import type { EntryFieldTypes } from "contentful";
+import type { Asset, EntryFieldTypes, EntrySkeletonType, EntryFields } from "contentful";
+
+
+interface TypeTechnologiesFields {
+    technologyName: EntryFields.Symbol;
+    technologyUrl?: EntryFields.Symbol;
+    technologyLogo?: Asset;
+}
+
+type TypeTechnologies = EntrySkeletonType<TypeTechnologiesFields>;
+
+
+export interface TypeProjectDataFields {
+    projectTitle: EntryFields.Symbol;
+    slug: EntryFields.Symbol;
+    cardImage: Asset;
+    infoCardDescription: EntryFields.Symbol;
+    projectBreakdown: EntryFields.RichText;
+    repoUrl?: EntryFields.Symbol;
+    technologiesUsed?: EntrySkeletonType<TypeTechnologiesFields>[];
+}
+
+export type TypeProjectData = EntrySkeletonType<TypeProjectDataFields>;
+
 
 export interface BlogPost {
     contentTypeId: "blogPost",
-    fields: {
+    field: {
         title: EntryFieldTypes.Text
         content: EntryFieldTypes.RichText,
         date: EntryFieldTypes.Date,
@@ -12,35 +35,31 @@ export interface BlogPost {
     }
 }
 
-interface Technologies {
-    contentTypeId: "technologies",
-    fields: {
-        technologyName: EntryFieldTypes.Text;
-        technologyUrl: EntryFieldTypes.Text;
-        technologyLogo: EntryFieldTypes.AssetLink;
-    }
-}
+// interface Technologies {
+//     contentTypeId: "technologies",
+//     fields: {
+//         technologyName: EntryFieldTypes.Text;
+//         technologyUrl: EntryFieldTypes.Text;
+//         technologyLogo: EntryFieldTypes.AssetLink;
+//     }
+// }
 
-export interface ProjectData {
-    contentTypeId: "projectData",
-    fields: {
-        projectTitle: EntryFieldTypes.Text, // Title of the project
-        slug: EntryFieldTypes.Text, // the slug of the project
-        infoCardDescription: EntryFieldTypes.Text, // Description for the info card
-        projectBreakdown: EntryFieldTypes.RichText, // Detailed breakdown of the project
-        repoURL: EntryFieldTypes.Text, // URL to the project's repository
-        technologiesUsed: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<Technologies>>, // List of technologies used in the project
-        cardImage: {
-            fields: {
-                title: EntryFieldTypes.Text,
-                description: EntryFieldTypes.Text,
-                file: {
-                    url: EntryFieldTypes.AssetLink
-                }
-            }
-        }
-    }
-}
+
+
+// export interface ProjectData {
+//     contentTypeId: "projectData",
+//     fields: {
+//         projectTitle: EntryFieldTypes.Text,
+//         slug: EntryFieldTypes.Text,
+//         infoCardDescription: EntryFieldTypes.Text,
+//         projectBreakdown: EntryFieldTypes.RichText,
+//         repoURL: EntryFieldTypes.Text,
+//         technologiesUsed: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<Technologies>>,
+//         cardImage: Asset,
+//     }
+// }
+
+
 
 export const contentfulClient = contentful.createClient({
     space: import.meta.env.CONTENTFUL_SPACE_ID,
