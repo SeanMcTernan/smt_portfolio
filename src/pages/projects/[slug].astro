@@ -1,10 +1,10 @@
 ---
 import { contentfulClient } from "../../lib/contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-import type { ProjectData } from "../../lib/contentful";
+import type { TypeProjectData } from "../../lib/contentful";
 
 export async function getStaticPaths() {
-  const { items } = await contentfulClient.getEntries<ProjectData>({
+  const { items } = await contentfulClient.getEntries<TypeProjectData>({
     content_type: "projectData",
   });
   const pages = items.map((item) => ({
