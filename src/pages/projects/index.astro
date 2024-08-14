@@ -3,7 +3,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { contentfulClient } from "../../lib/contentful";
 import type { TypeProjectData } from "../../lib/contentful";
 import { type Asset } from "contentful";
-
 const entries = await contentfulClient.getEntries<TypeProjectData>({
   content_type: "projectData",
 });
@@ -15,7 +14,7 @@ const entries = await contentfulClient.getEntries<TypeProjectData>({
 >
   <section class="container mx-auto">
     <div
-      class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20 mt-8"
+      class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-10"
     >
       {
         entries.items.map((item) => {
@@ -31,19 +30,25 @@ const entries = await contentfulClient.getEntries<TypeProjectData>({
               : "";
           //Some code to prevent TS errors and to get the image URL and alt text
           return (
-            <div class="bg-white shadow-md rounded-lg p-4">
+            <div class="bg-primaryGray shadow-md rounded-lg border border-secondaryGray w-9/12 mx-auto relative">
               <img
                 src={imageUrl}
                 alt={imageAlt}
-                class="w-full h-48 object-cover mt-4"
+                class="w-full h-48 object-cover rounded-t-lg"
               />
-              <h2 class="text-xl font-bold">{item.fields.projectTitle}</h2>
-              <p class="mt-4">{item.fields.infoCardDescription}</p>
+              <div class="p-4 pb-24">
+                <h2 class="text-xl font-bold text-primaryWhite mt-4">
+                  {item.fields.projectTitle}
+                </h2>
+                <p class="mt-4 text-primaryWhite">
+                  {item.fields.infoCardDescription}
+                </p>
+              </div>
               <a
                 href={`/projects/${item.fields.slug}`}
-                class="block text-primaryTeal mt-4 hover:underline"
+                class="border border-primaryTeal text-primaryTeal py-2 px-4 rounded-lg inline-block hover:bg-primaryTeal hover:text-white absolute left-1/2 transform -translate-x-1/2 bottom-4"
               >
-                Read More
+                View Projects
               </a>
             </div>
           );

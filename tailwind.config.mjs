@@ -9,6 +9,7 @@ module.exports = {
 				secondaryGray: '#505459',
 				primaryTeal: '#3395ad',
 				primaryBlue: '#66cbea',
+				primaryWhite: '#bdbdbd',
 				default: 'var(--aw-color-text-default)',
 				muted: 'var(--aw-color-text-muted)',
 			},
