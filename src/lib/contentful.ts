@@ -35,31 +35,19 @@ export interface BlogPost {
     }
 }
 
-// interface Technologies {
-//     contentTypeId: "technologies",
-//     fields: {
-//         technologyName: EntryFieldTypes.Text;
-//         technologyUrl: EntryFieldTypes.Text;
-//         technologyLogo: EntryFieldTypes.AssetLink;
-//     }
-// }
+interface TypeCTAFields {
+    ctaText: EntryFieldTypes.Text;
+    urlPath: EntryFieldTypes.Text;
+}
 
-
-
-// export interface ProjectData {
-//     contentTypeId: "projectData",
-//     fields: {
-//         projectTitle: EntryFieldTypes.Text,
-//         slug: EntryFieldTypes.Text,
-//         infoCardDescription: EntryFieldTypes.Text,
-//         projectBreakdown: EntryFieldTypes.RichText,
-//         repoURL: EntryFieldTypes.Text,
-//         technologiesUsed: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<Technologies>>,
-//         cardImage: Asset,
-//     }
-// }
-
-
+export interface TypeHompageFields {
+    contentTypeId: "homepage";
+    fields: {
+        title: EntryFieldTypes.Text;
+        blurb: EntryFieldTypes.Text;
+        cta: EntrySkeletonType<TypeCTAFields>[];
+    };
+}
 
 export const contentfulClient = contentful.createClient({
     space: import.meta.env.CONTENTFUL_SPACE_ID,

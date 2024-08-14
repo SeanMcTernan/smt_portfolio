@@ -1,4 +1,6 @@
 ---
+import { contentfulClient, type TypeHompageFields } from "../lib/contentful";
+import type { EntrySkeletonType } from "contentful";
 import BaseLayout from "../layouts/BaseLayout.astro";
 // Import the Animations to be applied to the elements
 import "../assets/styles/animations.css";
@@ -6,6 +8,16 @@ import "../assets/styles/animations.css";
 const { default: rawSvgContent } = await import(
   "../assets/images/laptop.svg?raw"
 );
+
+const entries = await contentfulClient.getEntries<TypeHompageFields>({
+  content_type: "homepage",
+});
+
+const ctaFields = entries.items[0].fields.cta as EntrySkeletonType;
+const urlPath =
+  typeof ctaFields.fields.urlPath === "string" ? ctaFields.fields.urlPath : "";
+const ctaText =
+  typeof ctaFields.fields.ctaText === "string" ? ctaFields.fields.ctaText : "";
 ---
 
 <BaseLayout
@@ -18,19 +30,16 @@ const { default: rawSvgContent } = await import(
     >
       <div class="max-w-lg lg:mr-0 mt-40">
         <h1 class="text-white font-medium leading-tight text-4xl">
-          Welcome to Seán Mc Ternan's Portfolio
+          {entries.items[0].fields.title}
         </h1>
-        <p class="text-white mt-4 mb-10">
-          Thank you for taking the time to visit my portfolio website. If you
-          have any questions, please contact me through the contact page. To
-          view hidden code repositories, download my resume and more, please
-          login.
+        <p class="text-primaryWhite mt-4 mb-10">
+          {entries.items[0].fields.blurb}
         </p>
         <a
-          href="/projects"
+          href={urlPath}
           class="border border-primaryTeal text-primaryTeal py-2 px-4 rounded-lg inline-block hover:bg-primaryTeal hover:text-white mt-4"
         >
-          View Projects
+          {ctaText}
         </a>
       </div>
     </div>

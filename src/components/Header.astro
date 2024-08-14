@@ -4,10 +4,12 @@ import { Image } from "astro:assets";
 import logo from "../assets/images/logo.svg";
 ---
 
-<header class="sticky top-0 bg-primaryGray shadow-md py-4 mb-8">
+<header class="sticky top-0 bg-primaryGray shadow-md py-4 mb-8 z-50">
   <div class="container mx-auto flex justify-between items-center">
     <Image src={logo} alt="Site Logo" class="my-2 ml-2 hidden sm:block" />
-    <nav class="flex justify-center items-center w-full text-white uppercase">
+    <nav
+      class="flex justify-center items-center w-full text-primaryWhite uppercase"
+    >
       <div
         class="internal-links flex space-x-4 sm:space-x-8 lg:space-x-16 text-xs sm:text-sm md:text-base"
       >
