@@ -2,6 +2,7 @@
 import { contentfulClient } from "../../lib/contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import type { TypeProjectData } from "../../lib/contentful";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
   const { items } = await contentfulClient.getEntries<TypeProjectData>({
@@ -20,12 +21,17 @@ export async function getStaticPaths() {
 const { content, title } = Astro.props;
 ---
 
-<html lang="en">
-  <head>
-    <title>{title}</title>
-  </head>
-  <body>
-    <h1>{title}</h1>
-    <article set:html={content} />
-  </body>
-</html>
+<BaseLayout
+  pageTitle={title}
+  pageDescription=`A project page for the ${title} project.`
+>
+  <html lang="en">
+    <head>
+      <title>{title}</title>
+    </head>
+    <body>
+      <h1>{title}</h1>
+      <article set:html={content} />
+    </body>
+  </html>
+</BaseLayout>
