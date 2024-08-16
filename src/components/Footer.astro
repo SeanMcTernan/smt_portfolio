@@ -12,7 +12,7 @@ const { default: linkedinRaw } = await import(
 
 <footer class="bg-primaryGray text-secondaryGray py-4 w-full">
   <nav class="flex justify-center items-center w-full mb-4">
-    <div class="internal-links flex space-x-8 lg:space-x-16">
+    <div class="internal-links hidden sm:flex space-x-8 lg:space-x-16">
       <FooterLink href="/" class="hover:text-primaryTeal">Home</FooterLink>
       <FooterLink href="/blog" class="hover:text-primaryTeal">Blog</FooterLink>
       <FooterLink href="/about" class="hover:text-primaryTeal">About</FooterLink
@@ -21,8 +21,34 @@ const { default: linkedinRaw } = await import(
         >Contact</FooterLink
       >
     </div>
+    <div class="social-links flex sm:hidden space-x-8">
+      <!-- Github -->
+      <a
+        href="https://github.com/SeanMcTernan/"
+        target="_blank"
+        class="hover:text-primaryTeal flex items-center"
+      >
+        <svg width="35" height="35" set:html={githubRaw} />
+      </a>
+      <!-- LinkedIn -->
+      <a
+        href="https://www.linkedin.com/in/seanmcternan/"
+        target="_blank"
+        class="hover:text-primaryTeal flex items-center"
+      >
+        <svg width="35" height="35" set:html={linkedinRaw} />
+      </a>
+      <!-- Instagram -->
+      <a
+        href="https://instagram.com/sean0ftheshred"
+        target="_blank"
+        class="hover:text-primaryTeal flex items-center"
+      >
+        <svg width="35" height="35" set:html={instagramRaw} />
+      </a>
+    </div>
   </nav>
-  <div class="flex justify-center space-x-4 my-4">
+  <div class="flex justify-center space-x-8 my-4 sm:flex">
     <!-- Github -->
     <a
       href="https://github.com/SeanMcTernan/"
