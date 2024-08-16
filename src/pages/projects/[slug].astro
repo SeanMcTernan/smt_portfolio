@@ -3,6 +3,9 @@ import { contentfulClient } from "../../lib/contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import type { TypeProjectData } from "../../lib/contentful";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+const { default: githubRaw } = await import(
+  "../../assets/images/github.svg?raw"
+);
 
 export async function getStaticPaths() {
   const { items } = await contentfulClient.getEntries<TypeProjectData>({
@@ -12,29 +15,37 @@ export async function getStaticPaths() {
     params: { slug: item.fields.slug },
     props: {
       title: item.fields.projectTitle,
-      cardImage: item.fields.cardImage,
+      overview: item.fields.projectOverview,
       content: documentToHtmlString(item.fields.projectBreakdown),
       repoUrl: item.fields.repoUrl,
       technologiesUsed: item.fields.technologiesUsed,
+      images: item.fields.projectImages,
     },
   }));
   return pages;
 }
 
-const { title, cardImage, content, repoUrl, technologiesUsed } = Astro.props;
+const { content, images, overview, repoUrl, technologiesUsed, title } =
+  Astro.props;
 ---
 
 <BaseLayout
   pageTitle={title}
-  pageDescription=`A project page for the ${title} project.`
+  pageDescription={`A project page for the ${title} project.`}
 >
   <html lang="en">
     <head>
       <title>{title}</title>
     </head>
-    <body>
-      <h1>{title}</h1>
-      <article set:html={content} />
+    <body class="flex items-center justify-center min-h-screen">
+      <div class="text-center px-12 md:px-24 lg:px-72">
+        <h1
+          class="font-fine text-primaryTeal mb-10 text-4xl md:text-6xl lg:text-8xl"
+        >
+          {title}
+        </h1>
+        <p class="text-primaryWhite text-justify">{overview}</p>
+      </div>
     </body>
   </html>
 </BaseLayout>
