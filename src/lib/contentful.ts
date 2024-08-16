@@ -13,12 +13,14 @@ type TypeTechnologies = EntrySkeletonType<TypeTechnologiesFields>;
 
 export interface TypeProjectDataFields {
     projectTitle: EntryFields.Symbol;
+    projectOverview: EntryFields.Text;
+    projectBreakdown: EntryFields.RichText;
+    projectImages?: Asset[];
+    repoUrl?: EntryFields.Symbol;
+    technologiesUsed?: EntrySkeletonType<TypeTechnologiesFields>[];
     slug: EntryFields.Symbol;
     cardImage: Asset;
     infoCardDescription: EntryFields.Symbol;
-    projectBreakdown: EntryFields.RichText;
-    repoUrl?: EntryFields.Symbol;
-    technologiesUsed?: EntrySkeletonType<TypeTechnologiesFields>[];
 }
 
 export type TypeProjectData = EntrySkeletonType<TypeProjectDataFields>;
