@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'YourBoldFont';
+  src: url('../../../public/fonts/roboto-thin.ttf') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @layer utilities {
   .bg-page {
     background-color: var(--aw-color-bg-page);

@@ -2,6 +2,7 @@
 import { contentfulClient, type TypeHompageFields } from "../lib/contentful";
 import type { EntrySkeletonType } from "contentful";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "~/components/Button.astro";
 // Import the Animations to be applied to the elements
 import "../assets/styles/animations.css";
 // Extract the RAW SVG code from the SVG file
@@ -35,12 +36,7 @@ const ctaText =
         <p class="text-primaryWhite mt-4 mb-10">
           {entries.items[0].fields.blurb}
         </p>
-        <a
-          href={urlPath}
-          class="border border-primaryTeal text-primaryTeal py-2 px-4 rounded-lg inline-block hover:bg-primaryTeal hover:text-white mt-4"
-        >
-          {ctaText}
-        </a>
+        <Button urlPath={urlPath} text={ctaText} />
       </div>
     </div>
     <div class="flex justify-center items-center p-4 h-full">
