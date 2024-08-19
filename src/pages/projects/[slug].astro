@@ -2,6 +2,7 @@
 import { contentfulClient } from "../../lib/contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import type { TypeProjectData } from "../../lib/contentful";
+import { type Asset } from "contentful";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Button from "~/components/Button.astro";
 const { default: githubRaw } = await import(
@@ -12,22 +13,47 @@ export async function getStaticPaths() {
   const { items } = await contentfulClient.getEntries<TypeProjectData>({
     content_type: "projectData",
   });
-  const pages = items.map((item) => ({
-    params: { slug: item.fields.slug },
-    props: {
-      title: item.fields.projectTitle,
-      overview: item.fields.projectOverview,
-      content: documentToHtmlString(item.fields.projectBreakdown),
-      repoUrl: item.fields.repoUrl,
-      technologiesUsed: item.fields.technologiesUsed,
-      images: item.fields.projectImages,
-    },
-  }));
+
+  const pages = items.map((item) => {
+    const cardImage = item.fields.cardImage as Asset;
+    const imageUrl =
+      typeof cardImage.fields.file?.url === "string"
+        ? cardImage.fields.file.url
+        : "";
+    const imageAlt =
+      typeof cardImage.fields.title === "string" ? cardImage.fields.title : "";
+    const imageDescription =
+      typeof cardImage.fields.description === "string"
+        ? cardImage.fields.description
+        : "";
+    return {
+      params: { slug: item.fields.slug },
+      props: {
+        title: item.fields.projectTitle,
+        overview: item.fields.projectOverview,
+        content: documentToHtmlString(item.fields.projectBreakdown),
+        repoUrl: item.fields.repoUrl,
+        technologiesUsed: item.fields.technologiesUsed,
+        imageUrl,
+        imageAlt,
+        imageDescription,
+      },
+    };
+  });
+
   return pages;
 }
 
-const { content, images, overview, repoUrl, technologiesUsed, title } =
-  Astro.props;
+const {
+  content,
+  imageUrl,
+  imageAlt,
+  imageDescription,
+  overview,
+  repoUrl,
+  technologiesUsed,
+  title,
+} = Astro.props;
 ---
 
 <BaseLayout
@@ -39,7 +65,7 @@ const { content, images, overview, repoUrl, technologiesUsed, title } =
       <title>{title}</title>
     </head>
     <body class="flex items-center justify-center min-h-screen">
-      <div class="w-full px-12 md:px-24 lg:px-72">
+      <div class="w-full px-12 md:px-24 lg:px-72 mb-16">
         <div class="flex justify-center md:justify-start mb-4">
           <Button
             urlPath="/projects"
@@ -75,7 +101,12 @@ const { content, images, overview, repoUrl, technologiesUsed, title } =
         <div class="text-primaryWhite text-justify mt-8">
           <article set:html={content} />
         </div>
+        <!-- Image -->
+        <div class="flex flex-col items-center mt-8">
+          <img src={imageUrl} alt={imageAlt} class="w-full max-w-prose" />
+          <p class="text-primaryWhite text-center mt-2">{imageDescription}</p>
+        </div>
       </div>
     </body>
-  </html></BaseLayout
->
+  </html>
+</BaseLayout>
