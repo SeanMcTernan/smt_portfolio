@@ -48,14 +48,34 @@ const { content, images, overview, repoUrl, technologiesUsed, title } =
           />
         </div>
         <div class="text-center">
+          <!-- Project Title -->
           <h1
             class="font-bold text-primaryTeal mb-10 text-4xl md:text-6xl lg:text-5xl"
           >
             {title}
           </h1>
+          <!-- Project  Overview -->
           <p class="text-primaryWhite text-justify">{overview}</p>
+        </div>
+        <!-- GitHub Link -->
+        <div class="flex justify-center mt-8">
+          <a
+            href={repoUrl}
+            target="_blank"
+            class="text-primaryTeal hover:text-secondaryGray flex items-center"
+          >
+            <svg width="35" height="35" set:html={githubRaw} />
+          </a>
+        </div>
+        <!-- Divider -->
+        <div class="flex justify-center mt-4">
+          <div class="w-full max-w-prose border-t border-primaryWhite"></div>
+        </div>
+        <!-- Contect -->
+        <div class="text-primaryWhite text-justify mt-8">
+          <article set:html={content} />
         </div>
       </div>
     </body>
-  </html>
-</BaseLayout>
+  </html></BaseLayout
+>
