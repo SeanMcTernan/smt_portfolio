@@ -2,13 +2,15 @@
 interface Props {
   urlPath: string;
   text: string;
-  boxClass?: string;
+  newAttributes?: string;
 }
 
-const { urlPath, text, boxClass } = Astro.props;
+const { urlPath, text, newAttributes } = Astro.props;
 const defaultClass =
   "border border-primaryTeal text-primaryTeal py-2 px-4 rounded-lg inline-block hover:bg-primaryTeal hover:text-white mt-4";
-const finalClass = boxClass ? boxClass : defaultClass;
+const finalClass = newAttributes
+  ? `${defaultClass} ${newAttributes}`
+  : defaultClass;
 ---
 
 <a href={urlPath} class={finalClass}>

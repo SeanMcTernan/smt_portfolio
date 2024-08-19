@@ -48,7 +48,7 @@ const entries = await contentfulClient.getEntries<TypeProjectData>({
               <Button
                 urlPath={`/projects/${item.fields.slug}`}
                 text="View Projects"
-                boxClass="border border-primaryTeal text-primaryTeal py-2 px-4 rounded-lg inline-block hover:bg-primaryTeal hover:text-white absolute left-1/2 transform -translate-x-1/2 bottom-4"
+                newAttributes="absolute left-1/2 transform -translate-x-1/2 bottom-4"
               />
             </div>
           );
