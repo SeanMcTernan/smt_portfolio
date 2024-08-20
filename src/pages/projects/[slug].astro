@@ -60,7 +60,16 @@ const {
   repoUrl,
   technologiesUsed,
   title,
-} = Astro.props;
+} = Astro.props as {
+  content: string;
+  imageUrl: string;
+  imageAlt: string;
+  imageDescription: string;
+  overview: string;
+  repoUrl?: string;
+  technologiesUsed: TypeTechnologies[];
+  title: string;
+};
 ---
 
 <BaseLayout
