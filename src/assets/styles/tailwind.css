@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'YourBoldFont';
-  src: url('../../../public/fonts/roboto-thin.ttf') format('woff');
+  src: url('/fonts/roboto-thin.ttf') format('woff');
   font-weight: normal;
   font-style: normal;
 }

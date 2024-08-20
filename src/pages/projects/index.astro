@@ -20,14 +20,14 @@ const entries = await contentfulClient.getEntries<TypeProjectData>({
       {
         entries.items.map((item) => {
           //Some code to prevent TS errors and to get the image URL and alt text
-          const cardImage = item.fields.cardImage as Asset;
+          const projectImage = item.fields.projectImage as Asset;
           const imageUrl =
-            typeof cardImage.fields.file?.url === "string"
-              ? cardImage.fields.file.url
+            typeof projectImage.fields.file?.url === "string"
+              ? projectImage.fields.file.url
               : "";
           const imageAlt =
-            typeof cardImage.fields.title === "string"
-              ? cardImage.fields.title
+            typeof projectImage.fields.title === "string"
+              ? projectImage.fields.title
               : "";
           //Some code to prevent TS errors and to get the image URL and alt text
           return (

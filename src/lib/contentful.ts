@@ -16,11 +16,10 @@ export interface TypeProjectDataFields {
     projectTitle: EntryFields.Symbol;
     projectOverview: EntryFields.Text;
     projectBreakdown: EntryFields.RichText;
-    projectImages?: Asset[];
     repoUrl?: EntryFields.Symbol;
     technologiesUsed?: EntrySkeletonType<TypeTechnologiesFields>[];
     slug: EntryFields.Symbol;
-    cardImage: Asset;
+    projectImage: Asset;
     infoCardDescription: EntryFields.Symbol;
 }
 

@@ -1,11 +1,7 @@
 ---
 import { contentfulClient } from "../../lib/contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-import type {
-  TypeProjectData,
-  TypeTechnologiesFields,
-  TypeTechnologies,
-} from "../../lib/contentful";
+import type { TypeProjectData, TypeTechnologies } from "../../lib/contentful";
 import { type Asset } from "contentful";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Button from "~/components/Button.astro";
@@ -23,16 +19,18 @@ export async function getStaticPaths() {
     const technologiesUsed = item.fields.technologiesUsed
       ? (item.fields.technologiesUsed as TypeTechnologies[])
       : [];
-    const cardImage = item.fields.cardImage as Asset;
+    const projectImage = item.fields.projectImage as Asset;
     const imageUrl =
-      typeof cardImage.fields.file?.url === "string"
-        ? cardImage.fields.file.url
+      typeof projectImage.fields.file?.url === "string"
+        ? projectImage.fields.file.url
         : "";
     const imageAlt =
-      typeof cardImage.fields.title === "string" ? cardImage.fields.title : "";
+      typeof projectImage.fields.title === "string"
+        ? projectImage.fields.title
+        : "";
     const imageDescription =
-      typeof cardImage.fields.description === "string"
-        ? cardImage.fields.description
+      typeof projectImage.fields.description === "string"
+        ? projectImage.fields.description
         : "";
 
     return {
@@ -120,13 +118,18 @@ const {
         </div>
         <!-- Technologies Used -->
         <div class="w-full max-w-prose mt-8">
-          <h1 class="text-primaryWhite text-left mb-4 text-4xl">
+          <h1 class="text-primaryWhite text-left mb-8 text-2xl">
             Technology Used
           </h1>
           <!-- Add your technologies used content here -->
-          <ul class="text-primaryWhite text-left">
+          <div class="grid grid-cols-4 md:grid-cols-4 gap-4 w-full">
             {
               technologiesUsed.map((tech) => {
+                const techURL = tech.fields.technologyUrl as string;
+                const techName =
+                  typeof tech.fields.technologyName === "string"
+                    ? tech.fields.technologyName
+                    : "";
                 const techLogo = tech.fields.technologyLogo as Asset;
                 const techLogoURL =
                   typeof techLogo.fields.file?.url === "string"
@@ -141,16 +144,28 @@ const {
                     ? techLogo.fields.description
                     : "";
                 return (
-                  <img
-                    src={techLogoURL}
-                    alt={imageAlt}
-                    title={imageDescription}
-                    class="w-24 h-24 mr-4"
-                  />
+                  <div class="flex flex-col items-center">
+                    <a
+                      href={techURL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="flex flex-col items-center"
+                    >
+                      <img
+                        src={techLogoURL}
+                        alt={imageAlt}
+                        title={imageDescription}
+                        class="w-10 h-10"
+                      />
+                      <p class="text-primaryWhite hover:text-primaryTeal text-center mt-2">
+                        {techName}
+                      </p>
+                    </a>
+                  </div>
                 );
               })
             }
-          </ul>
+          </div>
         </div>
       </div>
     </body>
