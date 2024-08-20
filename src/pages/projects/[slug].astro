@@ -124,46 +124,47 @@ const {
           <!-- Add your technologies used content here -->
           <div class="grid grid-cols-4 md:grid-cols-4 gap-4 w-full">
             {
-              technologiesUsed.map((tech) => {
-                const techURL = tech.fields.technologyUrl as string;
-                const techName =
-                  typeof tech.fields.technologyName === "string"
-                    ? tech.fields.technologyName
-                    : "";
-                const techLogo = tech.fields.technologyLogo as Asset;
-                const techLogoURL =
-                  typeof techLogo.fields.file?.url === "string"
-                    ? techLogo.fields.file.url
-                    : "";
-                const imageAlt =
-                  typeof techLogo.fields.title === "string"
-                    ? techLogo.fields.title
-                    : "";
-                const imageDescription =
-                  typeof techLogo.fields.description === "string"
-                    ? techLogo.fields.description
-                    : "";
-                return (
-                  <div class="flex flex-col items-center">
-                    <a
-                      href={techURL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="flex flex-col items-center"
-                    >
-                      <img
-                        src={techLogoURL}
-                        alt={imageAlt}
-                        title={imageDescription}
-                        class="w-10 h-10"
-                      />
-                      <p class="text-primaryWhite hover:text-primaryTeal text-center mt-2">
-                        {techName}
-                      </p>
-                    </a>
-                  </div>
-                );
-              })
+              Array.isArray(technologiesUsed) &&
+                technologiesUsed.map((tech) => {
+                  const techURL = tech.fields.technologyUrl as string;
+                  const techName =
+                    typeof tech.fields.technologyName === "string"
+                      ? tech.fields.technologyName
+                      : "";
+                  const techLogo = tech.fields.technologyLogo as Asset;
+                  const techLogoURL =
+                    typeof techLogo.fields.file?.url === "string"
+                      ? techLogo.fields.file.url
+                      : "";
+                  const imageAlt =
+                    typeof techLogo.fields.title === "string"
+                      ? techLogo.fields.title
+                      : "";
+                  const imageDescription =
+                    typeof techLogo.fields.description === "string"
+                      ? techLogo.fields.description
+                      : "";
+                  return (
+                    <div class="flex flex-col items-center">
+                      <a
+                        href={techURL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex flex-col items-center"
+                      >
+                        <img
+                          src={techLogoURL}
+                          alt={imageAlt}
+                          title={imageDescription}
+                          class="w-10 h-10"
+                        />
+                        <p class="text-primaryWhite hover:text-primaryTeal text-center mt-2">
+                          {techName}
+                        </p>
+                      </a>
+                    </div>
+                  );
+                })
             }
           </div>
         </div>
