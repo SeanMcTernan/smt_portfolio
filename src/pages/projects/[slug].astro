@@ -1,7 +1,11 @@
 ---
 import { contentfulClient } from "../../lib/contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-import type { TypeProjectData } from "../../lib/contentful";
+import type {
+  TypeProjectData,
+  TypeTechnologiesFields,
+  TypeTechnologies,
+} from "../../lib/contentful";
 import { type Asset } from "contentful";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Button from "~/components/Button.astro";
@@ -15,6 +19,10 @@ export async function getStaticPaths() {
   });
 
   const pages = items.map((item) => {
+    //Type guard to prevent TS errors
+    const technologiesUsed = item.fields.technologiesUsed
+      ? (item.fields.technologiesUsed as TypeTechnologies[])
+      : [];
     const cardImage = item.fields.cardImage as Asset;
     const imageUrl =
       typeof cardImage.fields.file?.url === "string"
@@ -26,6 +34,7 @@ export async function getStaticPaths() {
       typeof cardImage.fields.description === "string"
         ? cardImage.fields.description
         : "";
+
     return {
       params: { slug: item.fields.slug },
       props: {
@@ -33,7 +42,7 @@ export async function getStaticPaths() {
         overview: item.fields.projectOverview,
         content: documentToHtmlString(item.fields.projectBreakdown),
         repoUrl: item.fields.repoUrl,
-        technologiesUsed: item.fields.technologiesUsed,
+        technologiesUsed,
         imageUrl,
         imageAlt,
         imageDescription,
@@ -104,7 +113,44 @@ const {
         <!-- Image -->
         <div class="flex flex-col items-center mt-8">
           <img src={imageUrl} alt={imageAlt} class="w-full max-w-prose" />
-          <p class="text-primaryWhite text-center mt-2">{imageDescription}</p>
+          <p class="text-primaryWhite text-center mt-6">{imageDescription}</p>
+        </div>
+        <div class="flex justify-center mt-4">
+          <div class="w-full max-w-prose border-t border-primaryWhite"></div>
+        </div>
+        <!-- Technologies Used -->
+        <div class="w-full max-w-prose mt-8">
+          <h1 class="text-primaryWhite text-left mb-4 text-4xl">
+            Technology Used
+          </h1>
+          <!-- Add your technologies used content here -->
+          <ul class="text-primaryWhite text-left">
+            {
+              technologiesUsed.map((tech) => {
+                const techLogo = tech.fields.technologyLogo as Asset;
+                const techLogoURL =
+                  typeof techLogo.fields.file?.url === "string"
+                    ? techLogo.fields.file.url
+                    : "";
+                const imageAlt =
+                  typeof techLogo.fields.title === "string"
+                    ? techLogo.fields.title
+                    : "";
+                const imageDescription =
+                  typeof techLogo.fields.description === "string"
+                    ? techLogo.fields.description
+                    : "";
+                return (
+                  <img
+                    src={techLogoURL}
+                    alt={imageAlt}
+                    title={imageDescription}
+                    class="w-24 h-24 mr-4"
+                  />
+                );
+              })
+            }
+          </ul>
         </div>
       </div>
     </body>

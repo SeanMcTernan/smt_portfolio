@@ -1,14 +1,15 @@
 import contentful from "contentful";
+
 import type { Asset, EntryFieldTypes, EntrySkeletonType, EntryFields } from "contentful";
 
 
-interface TypeTechnologiesFields {
+export interface TypeTechnologiesFields {
     technologyName: EntryFields.Symbol;
     technologyUrl?: EntryFields.Symbol;
     technologyLogo?: Asset;
 }
 
-type TypeTechnologies = EntrySkeletonType<TypeTechnologiesFields>;
+export type TypeTechnologies = EntrySkeletonType<TypeTechnologiesFields>;
 
 
 export interface TypeProjectDataFields {
