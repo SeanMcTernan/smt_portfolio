@@ -37,6 +37,8 @@ export interface BlogPost {
     }
 }
 
+//Homepage Types
+
 interface TypeCTAFields {
     ctaText: EntryFieldTypes.Text;
     urlPath: EntryFieldTypes.Text;
@@ -49,6 +51,48 @@ export interface TypeHompageFields {
         blurb: EntryFieldTypes.Text;
         cta: EntrySkeletonType<TypeCTAFields>[];
     };
+}
+
+//Work Experience Types
+
+interface TypeEducationInformationFields {
+    name: EntryFields.Symbol;
+    url?: EntryFields.Symbol;
+    description?: EntryFields.Text;
+}
+
+interface TypeCompanyInformationFields {
+    companyName: EntryFields.Symbol;
+    companyUrl?: EntryFields.Symbol;
+    companyLogo?: Asset;
+}
+
+interface TypeWorkExperienceFields {
+    title?: EntryFields.Symbol;
+    companyName?: EntryFields.Symbol;
+    startDate: EntryFields.Date;
+    endDate?: EntryFields.Date;
+    description: EntryFields.Text;
+    companyInformation: EntrySkeletonType<TypeCompanyInformationFields>;
+}
+
+interface TypeListedTechnologiesFields {
+    collectionName?: EntryFields.Symbol;
+    listedTechnologies: EntrySkeletonType<TypeTechnologiesFields>[];
+}
+
+interface TypeEducationCollectionFields {
+    title: EntryFields.Symbol;
+    collection: EntrySkeletonType<TypeEducationInformationFields>[];
+}
+
+export interface TypeProfileFields {
+    title: EntryFields.Symbol;
+    about: EntryFields.Text;
+    profilePicture?: Asset;
+    workExperience: EntrySkeletonType<TypeWorkExperienceFields>[];
+    preferredTechnologies?: EntrySkeletonType<TypeListedTechnologiesFields>[];
+    education?: EntrySkeletonType<TypeEducationCollectionFields>[];
 }
 
 export const contentfulClient = contentful.createClient({
