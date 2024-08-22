@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'YourBoldFont';
+  font-family: 'Roboto-Thin';
   src: url('/fonts/roboto-thin.ttf') format('woff');
   font-weight: normal;
   font-style: normal;

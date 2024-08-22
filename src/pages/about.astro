@@ -41,13 +41,13 @@ const imageAlt = (profilePicture?.fields?.title as string) ?? "";
           )
         }
       </div>
-      <h1 class="text-4xl font-bold text-primaryTeal text-center">{title}</h1>
+      <h1 class="text-4xl font-thin text-primaryTeal text-center">{title}</h1>
       <div class="mt-8 w-full flex justify-center">
         <p class="mt-4 text-primaryWhite text-justify w-3/4">{about}</p>
       </div>
       <div class="mt-8 w-full grid grid-cols-1 sm:grid-cols-2 gap-10">
         <div class="text-center">
-          <h2 class="text-2xl font-bold text-primaryTeal">Work Experience</h2>
+          <h2 class="text-2xl font-thin text-primaryTeal">Work Experience</h2>
           {
             workExperience.map((experience: TypeWorkExperienceFields) => {
               const companyUrl = (experience.fields.companyUrl as string) ?? "";
@@ -85,13 +85,21 @@ const imageAlt = (profilePicture?.fields?.title as string) ?? "";
                         class="w-16 h-16 mb-4"
                       />
                     ))}
-                  <h3 class="text-xl font-bold">{experience.fields.title}</h3>
-                  <p class="italic">{experience.fields.companyName}</p>
+                  <h3 class="text-xl font-thin mb-4">
+                    {experience.fields.title}
+                  </h3>
+                  <p class="italic mb-2">{experience.fields.companyName}</p>
                   <p>
-                    {new Date(experience.fields.startDate).toLocaleDateString()}{" "}
+                    {new Date(experience.fields.startDate).toLocaleDateString(
+                      "en-US",
+                      { year: "numeric", month: "long" }
+                    )}{" "}
                     -{" "}
                     {experience.fields.endDate
-                      ? new Date(experience.fields.endDate).toLocaleDateString()
+                      ? new Date(experience.fields.endDate).toLocaleDateString(
+                          "en-US",
+                          { year: "numeric", month: "long" }
+                        )
                       : "Present"}
                   </p>
                   <p>{experience.fields.description}</p>
@@ -114,11 +122,11 @@ const imageAlt = (profilePicture?.fields?.title as string) ?? "";
           }
         </div>
         <div class="text-center">
-          <h2 class="text-2xl font-bold text-primaryTeal">Education</h2>
+          <h2 class="text-2xl font-thin text-primaryTeal">Education</h2>
           <!-- {
             education.map((edu) => (
               <div class="mt-4 text-primaryWhite text-left">
-                <h3 class="text-xl font-bold">{edu.fields.title}</h3>
+                <h3 class="text-xl font-thin">{edu.fields.title}</h3>
                 {edu.fields.collection.map((item) => (
                   <div class="mt-2">
                     <a
@@ -135,7 +143,7 @@ const imageAlt = (profilePicture?.fields?.title as string) ?? "";
       </div>
     </div>
     <div class="mt-8 text-center w-full">
-      <h2 class="text-2xl font-bold text-primaryTeal">
+      <h2 class="text-2xl font-thin text-primaryTeal">
         Preferred Technologies
       </h2>
       <p class="mt-4 text-primaryWhite">{preferredTechnologies}</p>
