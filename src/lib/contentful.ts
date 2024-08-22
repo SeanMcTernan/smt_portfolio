@@ -61,19 +61,17 @@ interface TypeEducationInformationFields {
     description?: EntryFields.Text;
 }
 
-interface TypeCompanyInformationFields {
-    companyName: EntryFields.Symbol;
-    companyUrl?: EntryFields.Symbol;
-    companyLogo?: Asset;
-}
-
-interface TypeWorkExperienceFields {
-    title?: EntryFields.Symbol;
-    companyName?: EntryFields.Symbol;
-    startDate: EntryFields.Date;
-    endDate?: EntryFields.Date;
-    description: EntryFields.Text;
-    companyInformation: EntrySkeletonType<TypeCompanyInformationFields>;
+export interface TypeWorkExperienceFields {
+    fields:
+    {
+        title?: EntryFields.Symbol;
+        companyName?: EntryFields.Symbol;
+        companyLogo?: Asset;
+        companyUrl?: EntryFields.Symbol;
+        startDate: EntryFields.Date;
+        endDate?: EntryFields.Date;
+        description: EntryFields.Text;
+    }
 }
 
 interface TypeListedTechnologiesFields {
@@ -87,12 +85,15 @@ interface TypeEducationCollectionFields {
 }
 
 export interface TypeProfileFields {
-    title: EntryFields.Symbol;
-    about: EntryFields.Text;
-    profilePicture?: Asset;
-    workExperience: EntrySkeletonType<TypeWorkExperienceFields>[];
-    preferredTechnologies?: EntrySkeletonType<TypeListedTechnologiesFields>[];
-    education?: EntrySkeletonType<TypeEducationCollectionFields>[];
+    contentTypeId: "profile";
+    fields: {
+        title: EntryFields.Symbol;
+        about: EntryFields.Text;
+        profilePicture?: Asset;
+        workExperience: EntrySkeletonType<TypeWorkExperienceFields>[];
+        preferredTechnologies?: EntrySkeletonType<TypeListedTechnologiesFields>[];
+        education?: EntrySkeletonType<TypeEducationCollectionFields>[];
+    };
 }
 
 export const contentfulClient = contentful.createClient({
