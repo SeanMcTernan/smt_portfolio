@@ -3,15 +3,34 @@ import {
   contentfulClient,
   type TypeProfileFields,
   type TypeWorkExperienceFields,
-} from "../lib/contentful";
-import { type Asset } from "contentful";
-import BaseLayout from "../layouts/BaseLayout.astro";
-const entries = await contentfulClient.getEntries<TypeProfileFields>({
+  type TypeListedTechnologiesFields,
+  type TypeEducationCollectionFields,
+  type TypeEducationInformationFields,
+} from "../lib/contentful"; // Import necessary modules and types from Contentful
+import { type Asset } from "contentful"; // Import Asset type from Contentful
+import BaseLayout from "../layouts/BaseLayout.astro"; // Import the BaseLayout component
+
+// Fetch profile entries from Contentful
+const profileEntries = await contentfulClient.getEntries<TypeProfileFields>({
   content_type: "profile",
 });
 
-const profileFields = entries.items[0].fields;
-const { title, about, preferredTechnologies } = profileFields;
+const technologyEntries =
+  await contentfulClient.getEntries<TypeListedTechnologiesFields>({
+    content_type: "listedTechnologies",
+  });
+
+// console.log(technologyEntries.items[0].fields.listedTechnologies);
+
+const educationEntries =
+  await contentfulClient.getEntries<TypeEducationCollectionFields>({
+    content_type: "educationCollection",
+  });
+
+// Extract fields from the fetched profile entry
+const profileFields = profileEntries.items[0].fields;
+const { title, about } = profileFields;
+
 // Explicitly type fields
 const workExperience =
   profileFields.workExperience as TypeWorkExperienceFields[];
@@ -29,7 +48,9 @@ const imageAlt = (profilePicture?.fields?.title as string) ?? "";
   <section
     class="container mx-auto flex flex-col items-center justify-center min-h-screen"
   >
+    <!-- Main container for the About section -->
     <div class="mt-8 flex flex-col items-center w-full">
+      <!-- Container for profile picture and title -->
       <div>
         {
           profilePicture && (
@@ -46,22 +67,46 @@ const imageAlt = (profilePicture?.fields?.title as string) ?? "";
         <p class="mt-4 text-primaryWhite text-justify w-3/4">{about}</p>
       </div>
       <div class="mt-8 w-full grid grid-cols-1 sm:grid-cols-2 gap-10">
+        <!-- Container for Work Experience and Education sections -->
         <div class="text-center">
           <h2 class="text-2xl font-thin text-primaryTeal">Work Experience</h2>
           {
-            workExperience.map((experience: TypeWorkExperienceFields) => {
-              const companyUrl = (experience.fields.companyUrl as string) ?? "";
-              return (
-                <div class="mt-4 text-primaryWhite text-left">
-                  {experience.fields.companyLogo &&
-                    experience.fields.companyLogo.fields.file &&
-                    experience.fields.companyLogo.fields.file.url &&
-                    (companyUrl ? (
-                      <a
-                        href={companyUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+            workExperience
+              //Sort work experience by start date in descending order
+              .sort(
+                (a, b) =>
+                  new Date(b.fields.startDate).getTime() -
+                  new Date(a.fields.startDate).getTime()
+              )
+              .map((experience: TypeWorkExperienceFields) => {
+                const companyUrl =
+                  (experience.fields.companyUrl as string) ?? "";
+                return (
+                  <div class="mt-4 text-primaryWhite text-left">
+                    {/* //Conditionally Render company logo if it exists and add a
+                    link if it exists */}
+                    {experience.fields.companyLogo &&
+                      experience.fields.companyLogo.fields.file &&
+                      experience.fields.companyLogo.fields.file.url &&
+                      (companyUrl ? (
+                        <a
+                          href={companyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <img
+                            src={
+                              experience.fields.companyLogo.fields.file
+                                .url as string
+                            }
+                            alt={
+                              experience.fields.companyLogo.fields
+                                .title as string
+                            }
+                            class="w-16 h-16 mb-4"
+                          />
+                        </a>
+                      ) : (
                         <img
                           src={
                             experience.fields.companyLogo.fields.file
@@ -72,73 +117,65 @@ const imageAlt = (profilePicture?.fields?.title as string) ?? "";
                           }
                           class="w-16 h-16 mb-4"
                         />
-                      </a>
-                    ) : (
-                      <img
-                        src={
-                          experience.fields.companyLogo.fields.file
-                            .url as string
-                        }
-                        alt={
-                          experience.fields.companyLogo.fields.title as string
-                        }
-                        class="w-16 h-16 mb-4"
-                      />
-                    ))}
-                  <h3 class="text-xl font-thin mb-4">
-                    {experience.fields.title}
-                  </h3>
-                  <p class="italic mb-2">{experience.fields.companyName}</p>
-                  <p>
-                    {new Date(experience.fields.startDate).toLocaleDateString(
-                      "en-US",
-                      { year: "numeric", month: "long" }
-                    )}{" "}
-                    -{" "}
-                    {experience.fields.endDate
-                      ? new Date(experience.fields.endDate).toLocaleDateString(
-                          "en-US",
-                          { year: "numeric", month: "long" }
-                        )
-                      : "Present"}
-                  </p>
-                  <p>{experience.fields.description}</p>
-                  {/* {experience.fields.companyInformation && (
-                  <div class="mt-2">
-                    <a
-                      href={
-                        experience.fields.companyInformation.fields.companyUrl
-                      }
-                      target="_blank"
-                      class="text-primaryTeal underline"
-                    >
-                      {experience.fields.companyInformation.fields.companyName}
-                    </a>
+                      ))}
+                    <h3 class="text-xl font-thin mb-4 text-primaryTeal uppercase">
+                      {experience.fields.title}
+                    </h3>
+                    <p class="mb-2 uppercase">
+                      {experience.fields.companyName}
+                    </p>
+                    <p class="italic mb-2">
+                      {new Date(experience.fields.startDate).toLocaleDateString(
+                        "en-US",
+                        { year: "numeric", month: "long" }
+                      )}{" "}
+                      -{" "}
+                      {experience.fields.endDate
+                        ? new Date(
+                            experience.fields.endDate
+                          ).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "long",
+                          })
+                        : "Present"}
+                    </p>
+                    <p>{experience.fields.description}</p>
                   </div>
-                )} */}
-                </div>
-              );
-            })
+                );
+              })
           }
         </div>
         <div class="text-center">
-          <h2 class="text-2xl font-thin text-primaryTeal">Education</h2>
-          <!-- {
-            education.map((edu) => (
+          <h2 class="text-2xl font-thin text-primaryTeal mb-12">Education</h2>
+          {
+            educationEntries.items.map((education) => (
               <div class="mt-4 text-primaryWhite text-left">
-                <h3 class="text-xl font-thin">{edu.fields.title}</h3>
-                {edu.fields.collection.map((item) => (
+                <h1 class="text-xl font-bold mt-8 mb-8 text-primaryWhite">
+                  {education.fields.title}
+                </h1>
+                {(
+                  education.fields
+                    .collection as TypeEducationInformationFields[]
+                ).map((item) => (
                   <div class="mt-2">
-                    <a
-                      href={item.fields.url}
-                      target="_blank"
-                      class="text-primaryTeal underline"
-                    >
-                      {item.fields.name}
-                    </a>
+                    {item.fields.url ? (
+                      <a
+                        href={item.fields.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-primaryWhite hover:text-primaryTeal"
+                      >
+                        <h2>{item.fields.name}</h2>
+                      </a>
+                    ) : (
+                      <h2 class="text-primaryTeal">{item.fields.name}</h2>
+                    )}
                     <p>{item.fields.description}</p>
                   </div>
-                ))} -->
+                ))}
+              </div>
+            ))
+          }
         </div>
       </div>
     </div>
@@ -146,7 +183,7 @@ const imageAlt = (profilePicture?.fields?.title as string) ?? "";
       <h2 class="text-2xl font-thin text-primaryTeal">
         Preferred Technologies
       </h2>
-      <p class="mt-4 text-primaryWhite">{preferredTechnologies}</p>
+      <!-- <p class="mt-4 text-primaryWhite">{preferredTechnologies}</p> -->
     </div>
   </section>
 </BaseLayout>

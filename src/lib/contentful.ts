@@ -25,18 +25,6 @@ export interface TypeProjectDataFields {
 
 export type TypeProjectData = EntrySkeletonType<TypeProjectDataFields>;
 
-
-export interface BlogPost {
-    contentTypeId: "blogPost",
-    field: {
-        title: EntryFieldTypes.Text
-        content: EntryFieldTypes.RichText,
-        date: EntryFieldTypes.Date,
-        description: EntryFieldTypes.Text,
-        slug: EntryFieldTypes.Text
-    }
-}
-
 //Homepage Types
 
 interface TypeCTAFields {
@@ -55,11 +43,18 @@ export interface TypeHompageFields {
 
 //Work Experience Types
 
-interface TypeEducationInformationFields {
-    name: EntryFields.Symbol;
-    url?: EntryFields.Symbol;
-    description?: EntryFields.Text;
+export interface TypeProfileFields {
+    contentTypeId: "profile";
+    fields: {
+        title: EntryFields.Symbol;
+        about: EntryFields.Text;
+        profilePicture?: Asset;
+        workExperience: EntrySkeletonType<TypeWorkExperienceFields>[];
+        preferredTechnologies?: EntrySkeletonType<TypeListedTechnologiesFields>[];
+        education?: EntrySkeletonType<TypeEducationCollectionFields>[];
+    };
 }
+
 
 export interface TypeWorkExperienceFields {
     fields:
@@ -74,27 +69,31 @@ export interface TypeWorkExperienceFields {
     }
 }
 
-interface TypeListedTechnologiesFields {
-    collectionName?: EntryFields.Symbol;
-    listedTechnologies: EntrySkeletonType<TypeTechnologiesFields>[];
+export interface TypeListedTechnologiesFields {
+    contentTypeId: "listedTechnologies";
+    fields: {
+        collectionName?: EntryFields.Symbol;
+        listedTechnologies: EntrySkeletonType<TypeTechnologiesFields>[];
+    }
 }
 
-interface TypeEducationCollectionFields {
-    title: EntryFields.Symbol;
-    collection: EntrySkeletonType<TypeEducationInformationFields>[];
+export interface TypeEducationInformationFields {
+    fields: {
+        name: EntryFields.Symbol;
+        url?: EntryFields.Symbol;
+        description?: EntryFields.Text;
+    }
 }
 
-export interface TypeProfileFields {
-    contentTypeId: "profile";
+
+export interface TypeEducationCollectionFields {
+    contentTypeId: "educationCollection";
     fields: {
         title: EntryFields.Symbol;
-        about: EntryFields.Text;
-        profilePicture?: Asset;
-        workExperience: EntrySkeletonType<TypeWorkExperienceFields>[];
-        preferredTechnologies?: EntrySkeletonType<TypeListedTechnologiesFields>[];
-        education?: EntrySkeletonType<TypeEducationCollectionFields>[];
-    };
+        collection: EntrySkeletonType<TypeEducationInformationFields>[];
+    }
 }
+
 
 export const contentfulClient = contentful.createClient({
     space: import.meta.env.CONTENTFUL_SPACE_ID,
