@@ -4,9 +4,12 @@ import type { Asset, EntryFieldTypes, EntrySkeletonType, EntryFields } from "con
 
 
 export interface TypeTechnologiesFields {
-    technologyName: EntryFields.Symbol;
-    technologyUrl?: EntryFields.Symbol;
-    technologyLogo?: Asset;
+    contentTypeId: "technologies";
+    fields: {
+        technologyName: EntryFields.Symbol;
+        technologyUrl?: EntryFields.Symbol;
+        technologyLogo?: Asset;
+    }
 }
 
 export type TypeTechnologies = EntrySkeletonType<TypeTechnologiesFields>;
