@@ -1,7 +1,10 @@
 ---
 import { contentfulClient } from "../../lib/contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-import type { TypeProjectData, TypeTechnologies } from "../../lib/contentful";
+import type {
+  TypeProjectData,
+  TypeTechnologiesFields,
+} from "../../lib/contentful";
 import { type Asset } from "contentful";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Button from "~/components/Button.astro";
@@ -17,7 +20,7 @@ export async function getStaticPaths() {
   const pages = items.map((item) => {
     //Type guard to prevent TS errors
     const technologiesUsed = item.fields.technologiesUsed
-      ? (item.fields.technologiesUsed as TypeTechnologies[])
+      ? (item.fields.technologiesUsed as TypeTechnologiesFields[])
       : [];
     const projectImage = item.fields.projectImage as Asset;
     const imageUrl =
@@ -67,7 +70,7 @@ const {
   imageDescription: string;
   overview: string;
   repoUrl?: string;
-  technologiesUsed: TypeTechnologies[];
+  technologiesUsed: TypeTechnologiesFields[];
   title: string;
 };
 ---
