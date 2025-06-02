@@ -30,3 +30,9 @@ pnpm-debug.log*
 # Visual Studio Code
 
 .code-workspace
+
+# ElevenLabs Astro Template
+elevenlabs_astro_template
+
+#Windsurf
+.windsurf
